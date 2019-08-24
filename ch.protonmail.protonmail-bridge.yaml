@@ -2,7 +2,7 @@ app-id: ch.protonmail.protonmail-bridge
 runtime: org.kde.Platform
 sdk: org.kde.Sdk
 runtime-version: "5.12"
-command: launcher.sh
+command: protonmail-bridge
 separate-locales: false
 finish-args:
   - --share=ipc
@@ -31,12 +31,11 @@ modules:
     buildsystem: simple
     build-commands:
       - install -Dp -m 755 apply_extra /app/bin/apply_extra
-      - install -Dp -m 755 launcher.sh /app/bin/launcher.sh
+      - install -Dp -m 755 protonmail-bridge /app/bin/protonmail-bridge
       - install -Dp /usr/bin/ar /app/bin/ar
       - install -Dp -m 644 ch.protonmail.protonmail-bridge.appdata.xml /app/share/metainfo/ch.protonmail.protonmail-bridge.appdata.xml
       - cp /usr/bin/ar /app/bin
       - ARCH_TRIPLE=$(gcc --print-multiarch) && cp /usr/lib/${ARCH_TRIPLE}/libbfd-*.so /app/lib
-      - ARCH_TRIPLE=$(gcc --print-multiarch) && ln -s /usr/lib/${ARCH_TRIPLE}/libcurl.so.4.5.0 /app/lib/libcurl-gnutls.so.4
     sources:
       - type: script
         dest-filename: apply_extra
@@ -55,12 +54,13 @@ modules:
           - install -Dp -m 644 share/icons/protonmail/ProtonMail_Bridge.svg export/share/icons/hicolor/scalable/apps/ch.protonmail.protonmail-bridge.svg
           - rm -rf bin _gpgorigin  lib  share
       - type: script
-        dest-filename: launcher.sh
+        dest-filename: protonmail-bridge
         commands:
           - 'exec "/app/extra/export/bin/protonmail-bridge" "$@"'
       - type: extra-data
         filename: protonmail-bridge.deb
         size: 36634946
+        installed-size: 23060712
         url: https://protonmail.com/download/beta/protonmail-bridge_1.2.0-1_amd64.deb
         sha256: 0b5e1ad0c3b9fb54cdc87332ae3222769ed6068059301a2c290dd37d4459cb13
       - type: file
