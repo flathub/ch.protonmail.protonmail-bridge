@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=ProtonMail Bridge
+Comment=The Bridge is an application that runs on your computer in the background and seamlessly encrypts and decrypts your mail as it enters and leaves your computer
+Exec=protonmail-bridge
+Icon=ch.protonmail.protonmail-bridge
+Type=Application
+Categories=Office;Email
+StartupWMClass=Protonmail-Bridge
