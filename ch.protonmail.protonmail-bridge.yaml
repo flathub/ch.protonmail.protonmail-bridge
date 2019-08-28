@@ -32,9 +32,10 @@ modules:
     build-commands:
       - install -Dp -m 755 apply_extra /app/bin/apply_extra
       - install -Dp -m 755 protonmail-bridge /app/bin/protonmail-bridge
-      - install -Dp /usr/bin/ar /app/bin/ar
+      - install -Dp -m 755 /usr/bin/ar /app/bin/ar
+      - install -Dp -m 644 ch.protonmail.protonmail-bridge.desktop /app/share/applications/ch.protonmail.protonmail-bridge.desktop
+      - install -Dp -m 644 ch.protonmail.protonmail-bridge.svg /app/share/icons/hicolor/scalable/apps/ch.protonmail.protonmail-bridge.svg
       - install -Dp -m 644 ch.protonmail.protonmail-bridge.appdata.xml /app/share/metainfo/ch.protonmail.protonmail-bridge.appdata.xml
-      - cp /usr/bin/ar /app/bin
       - ARCH_TRIPLE=$(gcc --print-multiarch) && cp /usr/lib/${ARCH_TRIPLE}/libbfd-*.so /app/lib
     sources:
       - type: script
@@ -46,12 +47,7 @@ modules:
           - rm -f control.tar.xz data.tar.xz debian-binary
           - mv usr/* .
           - rmdir usr
-          - sed -i s/Icon=.*/Icon=ch.protonmail.protonmail-bridge/ share/applications/ProtonMail_Bridge.desktop
-          - sed -i '$d' share/applications/ProtonMail_Bridge.desktop
-          - echo 'StartupWMClass=Protonmail Bridge' >> share/applications/ProtonMail_Bridge.desktop
           - install -Dp -m 744 lib/protonmail/bridge/protonmail-bridge export/bin/protonmail-bridge
-          - install -Dp -m 644 share/applications/ProtonMail_Bridge.desktop export/share/applications/ch.protonmail.protonmail-bridge.desktop
-          - install -Dp -m 644 share/icons/protonmail/ProtonMail_Bridge.svg export/share/icons/hicolor/scalable/apps/ch.protonmail.protonmail-bridge.svg
           - rm -rf bin _gpgorigin  lib  share
       - type: script
         dest-filename: protonmail-bridge
@@ -59,9 +55,13 @@ modules:
           - 'exec "/app/extra/export/bin/protonmail-bridge" "$@"'
       - type: extra-data
         filename: protonmail-bridge.deb
-        size: 36634946
+        size: 36642198
         installed-size: 23060712
         url: https://protonmail.com/download/beta/protonmail-bridge_1.2.0-1_amd64.deb
-        sha256: 0b5e1ad0c3b9fb54cdc87332ae3222769ed6068059301a2c290dd37d4459cb13
+        sha256: d748a982dc736e146a23346840f98ab2bfd009f54d950b871c9313b6de35f176
+      - type: file
+        path: ch.protonmail.protonmail-bridge.svg
       - type: file
         path: ch.protonmail.protonmail-bridge.appdata.xml
+      - type: file
+        path: ch.protonmail.protonmail-bridge.desktop
