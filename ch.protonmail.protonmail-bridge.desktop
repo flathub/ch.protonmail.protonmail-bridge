@@ -5,4 +5,4 @@ Exec=protonmail-bridge
 Icon=ch.protonmail.protonmail-bridge
 Type=Application
 Categories=Office;Email
-StartupWMClass=Protonmail-Bridge
+StartupWMClass=ProtonMail-Bridge
