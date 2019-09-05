@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>ch.protonmail.protonmail-bridge</id>
-  <name>Protonmail Bridge</name>
+  <name>ProtonMail Bridge</name>
   <project_license>LicenseRef-proprietary</project_license>
   <metadata_license>CC0-1.0</metadata_license>
   <developer_name>Proton Technologies AG</developer_name>
