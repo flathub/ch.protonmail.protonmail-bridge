@@ -55,10 +55,10 @@ modules:
           - 'exec "/app/extra/export/bin/protonmail-bridge" "$@"'
       - type: extra-data
         filename: protonmail-bridge.deb
-        size: 36642198
+        size: 36636754
         installed-size: 23060712
-        url: https://protonmail.com/download/beta/protonmail-bridge_1.2.0-1_amd64.deb
-        sha256: d748a982dc736e146a23346840f98ab2bfd009f54d950b871c9313b6de35f176
+        url: https://protonmail.com/download/beta/protonmail-bridge_1.2.2-1_amd64.deb
+        sha256: 27be03a2abc0fd51821db5c5453194fa65b5b54f534e62cfc7667128b60977e8
       - type: file
         path: ch.protonmail.protonmail-bridge.svg
       - type: file
