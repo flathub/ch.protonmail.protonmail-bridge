@@ -1,4 +1,4 @@
-app-id: ch.protonmail.protonmail-bridge
+id: ch.protonmail.protonmail-bridge
 runtime: org.kde.Platform
 sdk: org.kde.Sdk
 runtime-version: "5.12"
@@ -13,20 +13,17 @@ finish-args:
   - --talk-name=org.freedesktop.Notifications
 modules:
   - name: libsecret
-    sources:
-      - type: archive
-        url: https://gitlab.gnome.org/GNOME/libsecret/-/archive/0.18.8/libsecret-0.18.8.tar.gz
-        sha256: 33ee5dfd3556931b81d47111890c8b9c51093b4ced18e0e87f51c1769e24d43c
+    buildsystem: meson
     config-opts:
-      - --disable-manpages
-      - --disable-gtk-doc
-      - --disable-static
-      - --disable-introspection
-    cleanup:
-      - /bin
-      - /include
-      - /lib/*.la
-      - /lib/pkgconfig
+      - -Dmanpage=false
+      - -Dgtk_doc=false
+      - -Dvapi=false
+    sources:
+      - type: git
+        url: https://gitlab.gnome.org/GNOME/libsecret.git
+        tag: 0.19.1
+        commit: f576dfbe50f9aed22802ad0db0356d081f467d7a
+
   - name: protonmail-bridge
     buildsystem: simple
     build-commands:
@@ -36,7 +33,7 @@ modules:
       - install -Dp -m 644 ch.protonmail.protonmail-bridge.desktop /app/share/applications/ch.protonmail.protonmail-bridge.desktop
       - install -Dp -m 644 ch.protonmail.protonmail-bridge.svg /app/share/icons/hicolor/scalable/apps/ch.protonmail.protonmail-bridge.svg
       - install -Dp -m 644 ch.protonmail.protonmail-bridge.appdata.xml /app/share/metainfo/ch.protonmail.protonmail-bridge.appdata.xml
-      - ARCH_TRIPLE=$(gcc --print-multiarch) && cp /usr/lib/${ARCH_TRIPLE}/libbfd-*.so /app/lib
+      - ARCH_TRIPLE=$(gcc --print-multiarch) && install -Dp -m 644 /usr/lib/${ARCH_TRIPLE}/libbfd-*.so /app/lib
     sources:
       - type: script
         dest-filename: apply_extra
