@@ -1,7 +1,7 @@
 id: ch.protonmail.protonmail-bridge
 runtime: org.kde.Platform
 sdk: org.kde.Sdk
-runtime-version: "5.12"
+runtime-version: "5.13"
 command: protonmail-bridge
 separate-locales: false
 finish-args:
@@ -52,10 +52,10 @@ modules:
           - 'exec "/app/extra/export/bin/protonmail-bridge" "$@"'
       - type: extra-data
         filename: protonmail-bridge.deb
-        size: 36636754
+        size: 36665338
         installed-size: 23060712
-        url: https://protonmail.com/download/beta/protonmail-bridge_1.2.2-1_amd64.deb
-        sha256: 27be03a2abc0fd51821db5c5453194fa65b5b54f534e62cfc7667128b60977e8
+        url: https://protonmail.com/download/beta/protonmail-bridge_1.2.3-1_amd64.deb
+        sha256: 1c9393010c7025af4465d69f2a491153c8295c64fd9dd53c10ae1e8e55769906
       - type: file
         path: ch.protonmail.protonmail-bridge.svg
       - type: file
