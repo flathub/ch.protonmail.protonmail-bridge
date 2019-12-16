@@ -45,17 +45,17 @@ modules:
           - mv usr/* .
           - rmdir usr
           - install -Dp -m 744 lib/protonmail/bridge/protonmail-bridge export/bin/protonmail-bridge
-          - rm -rf bin _gpgorigin  lib  share
+          - rm -rf bin _gpgorigin lib share
       - type: script
         dest-filename: protonmail-bridge
         commands:
           - 'exec "/app/extra/export/bin/protonmail-bridge" "$@"'
       - type: extra-data
         filename: protonmail-bridge.deb
-        size: 36665338
+        size: 36761154 
         installed-size: 23060712
-        url: https://protonmail.com/download/beta/protonmail-bridge_1.2.3-1_amd64.deb
-        sha256: 1c9393010c7025af4465d69f2a491153c8295c64fd9dd53c10ae1e8e55769906
+        url: https://protonmail.com/download/beta/protonmail-bridge_1.2.4-1_amd64.deb
+        sha256: 2b213c2c82204fe21347c011f5ab61634bcbc0b1600f92310cc948b76fc6c6da 
       - type: file
         path: ch.protonmail.protonmail-bridge.svg
       - type: file
