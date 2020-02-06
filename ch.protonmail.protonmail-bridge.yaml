@@ -13,13 +13,7 @@ finish-args:
   - --talk-name=org.freedesktop.secrets
   - --talk-name=org.freedesktop.Notifications
 modules:
-  - name: libsecret
-    sources:
-      - type: git
-        url: https://gitlab.gnome.org/GNOME/libsecret.git
-        tag: 0.20.1
-        commit: e4428dd29fb41672a2dff330a600ed7af2dc74de
-
+  - shared-modules/libsecret/libsecret.json
   - name: protonmail-bridge
     buildsystem: simple
     build-commands:
