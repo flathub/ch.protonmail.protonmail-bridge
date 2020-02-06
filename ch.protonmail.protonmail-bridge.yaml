@@ -7,23 +7,13 @@ separate-locales: false
 finish-args:
   - --share=ipc
   - --socket=x11
+  - --socket=wayland
   - --share=network
   - --device=dri
   - --talk-name=org.freedesktop.secrets
   - --talk-name=org.freedesktop.Notifications
 modules:
-  - name: libsecret
-    buildsystem: meson
-    config-opts:
-      - -Dmanpage=false
-      - -Dgtk_doc=false
-      - -Dvapi=false
-    sources:
-      - type: git
-        url: https://gitlab.gnome.org/GNOME/libsecret.git
-        tag: 0.19.1
-        commit: f576dfbe50f9aed22802ad0db0356d081f467d7a
-
+  - shared-modules/libsecret/libsecret.json
   - name: protonmail-bridge
     buildsystem: simple
     build-commands:
