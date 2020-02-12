@@ -1,7 +1,7 @@
 id: ch.protonmail.protonmail-bridge
 runtime: org.kde.Platform
 sdk: org.kde.Sdk
-runtime-version: "5.13"
+runtime-version: "5.14"
 command: protonmail-bridge
 separate-locales: false
 finish-args:
