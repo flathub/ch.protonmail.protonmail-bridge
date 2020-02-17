@@ -1,7 +1,7 @@
 id: ch.protonmail.protonmail-bridge
-runtime: org.kde.Platform
-sdk: org.kde.Sdk
-runtime-version: "5.14"
+runtime: org.freedesktop.Platform
+sdk: org.freedesktop.Sdk
+runtime-version: "19.08"
 command: protonmail-bridge
 separate-locales: false
 finish-args:
@@ -11,7 +11,6 @@ finish-args:
   - --device=dri
   - --talk-name=org.freedesktop.secrets
   - --talk-name=org.freedesktop.Notifications
-  - --env=LD_LIBRARY_PATH=/app/extra/lib
 modules:
   - shared-modules/libsecret/libsecret.json
   - name: protonmail-bridge
@@ -31,20 +30,17 @@ modules:
           - ar x protonmail-bridge.deb
           - rm -f protonmail-bridge.deb
           - tar -xf data.tar.xz
-          - rm -f control.tar.xz data.tar.xz debian-binary
+          - rm -f control.tar.xz data.tar.xz debian-binary _gpgorigin
           - mv usr/* .
-          - for file in libQt5EglFsKmsSupport.so.5 libicudata.so.56 libicuuc.so.56 libicui18n.so.56; do install -Dp -m 644 -t lib lib/protonmail/bridge/lib/"$file"; done
-          - install -Dp -m 744 -t bin lib/protonmail/bridge/protonmail-bridge
-          - rmdir usr
-          - rm -rf _gpgorigin share lib/protonmail
+          - rm -rf share bin usr
       - type: script
         dest-filename: protonmail-bridge
         commands:
-          - 'exec "/app/extra/bin/protonmail-bridge" "$@"'
+          - 'exec "/app/extra/lib/protonmail/bridge/protonmail-bridge" "$@"'
       - type: extra-data
         filename: protonmail-bridge.deb
         size: 36826762
-        installed-size: 53658856
+        installed-size: 144988118
         url: https://protonmail.com/download/beta/protonmail-bridge_1.2.5-1_amd64.deb
         sha256: 90f9d1e651eb0f973c476d71859471a3e6aa73d17742c3503084e6b16f8947e1
       - type: file
