@@ -38,18 +38,18 @@
     <release version="1.2.5" date="2020-01-13">
       <description>
         <p>
-          Release notes: Ongoing users of Apple Mail on Catalina: It is
-          necessary to change Bridge SMTP security mode to SSL in Advance
-          Setting -> IMAP and SMTP settings dialog.
+          Release notes:
         </p>
         <ul>
-          <li>Better behaviour with poor internet connection</li>
+          <li>Database synchronization does not block IMAP communication</li>
+          <li>Incremental update of IMAP database</li>
+          <li>Improved communication between Bridge and API</li>
         </ul>
         <p>
           Fixed bugs:
         </p>
         <ul>
-          <li>Avoid delay when sending email from AppleMail Catalina</li>
+          <li>Avoid recovered messages in AppleMail</li>
         </ul>
       </description>
     </release>
