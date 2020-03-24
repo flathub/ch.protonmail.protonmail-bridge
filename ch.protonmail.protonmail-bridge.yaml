@@ -7,11 +7,9 @@ separate-locales: false
 finish-args:
   - --share=ipc
   - --socket=x11
-  - --socket=wayland
   - --share=network
   - --device=dri
   - --talk-name=org.freedesktop.secrets
-  - --talk-name=org.freedesktop.Notifications
   - --filesystem=~/.local/state/protonmail/bridge
 modules:
   - shared-modules/libsecret/libsecret.json
