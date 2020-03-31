@@ -39,7 +39,7 @@ modules:
           - 'exec "/app/extra/lib/protonmail/bridge/protonmail-bridge" "$@"'
       - type: extra-data
         filename: protonmail-bridge.deb
-        size: 37888494
+        size: 37884650
         installed-size: 144988118
         url: https://protonmail.com/download/beta/protonmail-bridge_1.2.6-1_amd64.deb
         sha256: fff4ad507f6264a0530973315409f50adbb5ca885a98ffe8ee96fac59b6a0ee1
