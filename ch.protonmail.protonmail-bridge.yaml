@@ -10,7 +10,6 @@ finish-args:
   - --share=network
   - --device=dri
   - --talk-name=org.freedesktop.secrets
-  - --filesystem=~/.local/state/protonmail/bridge
 modules:
   - shared-modules/libsecret/libsecret.json
   - name: protonmail-bridge
@@ -39,10 +38,10 @@ modules:
           - 'exec "/app/extra/lib/protonmail/bridge/protonmail-bridge" "$@"'
       - type: extra-data
         filename: protonmail-bridge.deb
-        size: 37879226
+        size: 37701698
         installed-size: 144988118
-        url: https://protonmail.com/download/protonmail-bridge_1.2.6-1_amd64.deb
-        sha256: 34fdc917fb2c6f06ec6c6a71041f31ad3599b4ee5556e09ad919c36d71eac247
+        url: https://protonmail.com/download/protonmail-bridge_1.2.7-1_amd64.deb
+        sha256: 2ed3d699af65ba61def5440597eee58165c5e0b72926bac8cd99d0e976d2b327
       - type: file
         path: ch.protonmail.protonmail-bridge.svg
       - type: file

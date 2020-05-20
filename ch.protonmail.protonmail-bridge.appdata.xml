@@ -35,6 +35,24 @@
   </screenshots>
 
   <releases>
+    <release version="1.2.7" date="2020-05-20">
+      <description>
+        <p>
+          Release notes:
+        </p>
+        <ul>
+          <li>Changed directory for storing logs on Linux</li>
+        </ul>
+        <p>
+          Fixed bugs:
+        </p>
+        <ul>
+          <li>Fixed sync errors due to localization</li>
+          <li>Fixed draft deletion</li>
+          <li>Fixed re-appearing messages in Outlook</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.6" date="2020-03-27">
       <description>
         <p>
