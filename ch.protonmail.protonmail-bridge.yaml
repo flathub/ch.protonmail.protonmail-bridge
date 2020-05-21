@@ -15,35 +15,18 @@ modules:
   - name: protonmail-bridge
     buildsystem: simple
     build-commands:
-      - install -Dp -m 755 apply_extra /app/bin/apply_extra
-      - install -Dp -m 755 protonmail-bridge /app/bin/protonmail-bridge
-      - install -Dp -m 755 /usr/bin/ar /app/bin/ar
       - install -Dp -m 644 ch.protonmail.protonmail-bridge.desktop /app/share/applications/ch.protonmail.protonmail-bridge.desktop
-      - install -Dp -m 644 ch.protonmail.protonmail-bridge.svg /app/share/icons/hicolor/scalable/apps/ch.protonmail.protonmail-bridge.svg
       - install -Dp -m 644 ch.protonmail.protonmail-bridge.appdata.xml /app/share/metainfo/ch.protonmail.protonmail-bridge.appdata.xml
-      - ARCH_TRIPLE=$(gcc --print-multiarch) && install -Dp -m 644 /usr/lib/${ARCH_TRIPLE}/libbfd-*.so /app/lib
+      - ar x protonmail-bridge.deb
+      - tar -xf data.tar.xz
+      - mv usr/lib/* /app/lib/
+      - install -Dp -m 644 usr/share/icons/hicolor/scalable/apps/protonmail-bridge.svg /app/share/icons/hicolor/scalable/apps/ch.protonmail.protonmail-bridge.svg
+      - ln -s /app/lib/protonmail/bridge/protonmail-bridge /app/bin/
     sources:
-      - type: script
-        dest-filename: apply_extra
-        commands:
-          - ar x protonmail-bridge.deb
-          - rm -f protonmail-bridge.deb
-          - tar -xf data.tar.xz
-          - rm -f control.tar.xz data.tar.xz debian-binary _gpgorigin
-          - mv usr/* .
-          - rm -rf share bin usr
-      - type: script
-        dest-filename: protonmail-bridge
-        commands:
-          - 'exec "/app/extra/lib/protonmail/bridge/protonmail-bridge" "$@"'
-      - type: extra-data
-        filename: protonmail-bridge.deb
-        size: 37701698
-        installed-size: 144988118
+      - type: file
+        dest-filename: protonmail-bridge.deb
         url: https://protonmail.com/download/protonmail-bridge_1.2.7-1_amd64.deb
         sha256: 2ed3d699af65ba61def5440597eee58165c5e0b72926bac8cd99d0e976d2b327
-      - type: file
-        path: ch.protonmail.protonmail-bridge.svg
       - type: file
         path: ch.protonmail.protonmail-bridge.appdata.xml
       - type: file
