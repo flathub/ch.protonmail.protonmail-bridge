@@ -15,12 +15,14 @@ modules:
   - name: protonmail-bridge
     buildsystem: simple
     build-commands:
-      - install -Dp -m 644 ch.protonmail.protonmail-bridge.desktop /app/share/applications/ch.protonmail.protonmail-bridge.desktop
-      - install -Dp -m 644 ch.protonmail.protonmail-bridge.appdata.xml /app/share/metainfo/ch.protonmail.protonmail-bridge.appdata.xml
+      - install -Dp -m 644 ch.protonmail.protonmail-bridge.appdata.xml /app/share/metainfo/${FLATPAK_ID}.appdata.xml
       - ar x protonmail-bridge.deb
       - tar -xf data.tar.xz
       - mv usr/lib/* /app/lib/
-      - install -Dp -m 644 usr/share/icons/hicolor/scalable/apps/protonmail-bridge.svg /app/share/icons/hicolor/scalable/apps/ch.protonmail.protonmail-bridge.svg
+      - install -Dp -m 644 usr/share/icons/hicolor/scalable/apps/protonmail-bridge.svg /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
+      - install -Dp -m 644 usr/share/applications/protonmail-bridge.desktop /app/share/applications/${FLATPAK_ID}.desktop
+      - desktop-file-edit --set-key="Icon" --set-value=${FLATPAK_ID} /app/share/applications/${FLATPAK_ID}.desktop
+      - desktop-file-edit --set-key="Categories" --set-value="Office;Email" /app/share/applications/${FLATPAK_ID}.desktop
       - ln -s /app/lib/protonmail/bridge/protonmail-bridge /app/bin/
     sources:
       - type: file
@@ -29,5 +31,3 @@ modules:
         sha256: 2ed3d699af65ba61def5440597eee58165c5e0b72926bac8cd99d0e976d2b327
       - type: file
         path: ch.protonmail.protonmail-bridge.appdata.xml
-      - type: file
-        path: ch.protonmail.protonmail-bridge.desktop
