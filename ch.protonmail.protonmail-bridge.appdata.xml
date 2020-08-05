@@ -35,6 +35,16 @@
   </screenshots>
 
   <releases>
+    <release version="1.2.8" date="2020-08-05">
+      <description>
+        <p>
+          Fixed bugs:
+        </p>
+        <ul>
+          <li>Fixed ignored import to Sent folder</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.7" date="2020-05-20">
       <description>
         <p>
