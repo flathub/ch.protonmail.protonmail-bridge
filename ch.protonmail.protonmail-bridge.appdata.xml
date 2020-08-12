@@ -35,154 +35,32 @@
   </screenshots>
 
   <releases>
-    <release version="1.2.8" date="2020-08-05">
+    <release version="1.3.3" date="2020-08-12">
       <description>
         <p>
-          Fixed bugs:
+          Release Notes:
         </p>
         <ul>
-          <li>Fixed ignored import to Sent folder</li>
+          <li>Improvements to Alternative Routing: Version two of this feature is now more resilient to unstable internet connections, which results in a smoother experience using this feature. Also includes fixes to previous implementation of Alternative Routing when first starting the application or when turning it off.</li>
+          <li>Email parsing improvements: Improved detection of email encodings embedded in html/xml in addition to message header; add a fallback option if encoding is not specified and decoding as UTF8 fails (ISO-8859-1); tweaked logic of parsing "References" header.</li>
+          <li>User interaction improvements: Some smaller improvements in specific cases to make the interaction with Proton Bridge clearer for the user</li>
+          <li>Code updates and maintenance: Migrated to GopenPGP v2, updates to GoIMAPv1, increased bbolt version to 1.3.5 and various improvements regarding extensibility and maintainability for upcoming work.</li>
+          <li>General stability improvements: Improvements to the behavior of the application under various unstable internet conditions.</li>
+        </ul>
+        <p>Fixed bugs:</p>
+        <ul>
+          <li>Fixed a slew of smaller bugs and some conditions which could cause the application to crash.</li>
         </ul>
       </description>
     </release>
-    <release version="1.2.7" date="2020-05-20">
-      <description>
-        <p>
-          Release notes:
-        </p>
-        <ul>
-          <li>Changed directory for storing logs on Linux</li>
-        </ul>
-        <p>
-          Fixed bugs:
-        </p>
-        <ul>
-          <li>Fixed sync errors due to localization</li>
-          <li>Fixed draft deletion</li>
-          <li>Fixed re-appearing messages in Outlook</li>
-        </ul>
-      </description>
-    </release>
-    <release version="1.2.6" date="2020-03-27">
-      <description>
-        <p>
-          Release notes:
-
-          NOTE: We recommend to reconfigure your email client
-          after upgrading to ensure the best results with the new draft folder
-          support
-        </p>
-        <ul>
-          <li>Faster and more resilient mail synchronization process, especially for large mailboxes</li>
-          <li>Added "Alternate Routing" feature to mitigate blocking of Proton Servers</li>
-          <li>Added synchronization of draft folder</li>
-          <li>Improved event handling when there are frequent changes</li>
-          <li>Security improvements for loading dependent libraries</li>
-          <li>Minor UI &amp; API communication tweaks</li>
-        </ul>
-        <p>
-          Fixed bugs:
-        </p>
-        <ul>
-          <li>Fixed rare case of sending the same message multiple times in Outlook</li>
-          <li>Fixed bug in macOS update process; available from next update</li>
-        </ul>
-      </description>
-    </release>
-    <release version="1.2.5" date="2020-01-13">
-      <description>
-        <p>
-          Release notes:
-        </p>
-        <ul>
-          <li>Database synchronization does not block IMAP communication</li>
-          <li>Incremental update of IMAP database</li>
-          <li>Improved communication between Bridge and API</li>
-        </ul>
-        <p>
-          Fixed bugs:
-        </p>
-        <ul>
-          <li>Avoid recovered messages in AppleMail</li>
-        </ul>
-      </description>
-    </release>
-    <release version="1.2.4" date="2019-12-16">
-      <description>
-        <p>
-          Release notes: Ongoing users of Apple Mail on Catalina: It is
-          necessary to change Bridge SMTP security mode to SSL in Advance
-          Setting -> IMAP and SMTP settings dialog.
-        </p>
-        <ul>
-          <li>Better behaviour with poor internet connection</li>
-        </ul>
-        <p>
-          Fixed bugs:
-        </p>
-        <ul>
-          <li>Avoid delay when sending email from AppleMail Catalina</li>
-        </ul>
-      </description>
-    </release>
-    <release version="1.2.3" date="2019-09-23">
-      <description>
-        <p>
-          Release notes:
-        </p>
-        <ul>
-          <li>Faster synchronization</li>
-          <li>Lookup for keys in Web Key Directory</li>
-          <li>Updated keychain library</li>
-        </ul>
-        <p>
-          Fixed bugs:
-        </p>
-        <ul>
-          <li>Fixed reseting hiding password on entry screen</li>
-          <li>Fixed importing message with double parameter definition</li>
-          <li>Fixed download link for Linux updates</li>
-          <li>Fixed sending messages with BCC only</li>
-          <li>Fixed locking issue in database</li>
-        </ul>
-      </description>
-    </release>
-    <release version="1.2.2" date="2019-08-20">
-      <description>
-        <p>
-          Release notes:
-        </p>
-        <ul>
-          <li>Improved performance of DB for synchronization and first load</li>
-          <li>Better crash reporting</li>
-          <li>ProtonMail API certificate pinning</li>
-        </ul>
-        <p>
-          Fixed bugs:
-        </p>
-        <ul>
-          <li>Resolved font issues for Fedora linux</li>
-        </ul>
-      </description>
-    </release>
-    <release version="1.1.6" date="2019-06-28">
-      <description>
-        <p>
-          Release notes:
-        </p>
-        <ul>
-          <li>Necessary updates reflecting API changes</li>
-          <li>Report wrongly formated messages</li>
-        </ul>
-        <p>
-          Fixed bugs:
-        </p>
-        <ul>
-          <li>Fixed verification for contacts signed by older or missing key</li>
-          <li>Outlook always shows attachment icon</li>
-        </ul>
-      </description>
-    </release>
+    <release version="1.2.8" date="2020-08-05"/>
+    <release version="1.2.7" date="2020-05-20"/>
+    <release version="1.2.6" date="2020-03-27"/>
+    <release version="1.2.5" date="2020-01-13"/>
+    <release version="1.2.4" date="2019-12-16"/>
+    <release version="1.2.3" date="2019-09-23"/>
+    <release version="1.2.2" date="2019-08-20"/>
+    <release version="1.1.6" date="2019-06-28"/>
   </releases>
 
   <content_rating type="oars-1.1"/>
