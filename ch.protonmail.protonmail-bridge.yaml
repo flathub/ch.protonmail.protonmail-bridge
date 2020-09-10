@@ -15,7 +15,7 @@ modules:
   - name: protonmail-bridge
     buildsystem: simple
     build-commands:
-      - install -Dp -m 644 ${FLATPAK_ID}.appdata.xml /app/share/metainfo/${FLATPAK_ID}.appdata.xml
+      - install -Dp -m 644 ${FLATPAK_ID}.metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
       - ar x protonmail-bridge.deb
       - tar -xf data.tar.xz
       - mv usr/lib/* /app/lib/
@@ -30,4 +30,4 @@ modules:
         url: https://protonmail.com/download/protonmail-bridge_1.3.3-1_amd64.deb
         sha256: 5265f10ec78a1051ed816910f55aa8b1ebfca53f747df38dc8af27f214105ca0
       - type: file
-        path: ch.protonmail.protonmail-bridge.appdata.xml
+        path: ch.protonmail.protonmail-bridge.metainfo.xml
