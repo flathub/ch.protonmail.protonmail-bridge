@@ -1,0 +1,11 @@
+--- a/go/src/github.com/therecipe/qt/internal/cmd/setup/prep.go
++++ b/go/src/github.com/therecipe/qt/internal/cmd/setup/prep.go
+@@ -44,7 +44,7 @@ func Prep(target string) {
+ 			var suc bool
+ 			sPath := filepath.Join(utils.GOBIN(), app)
+ 			var dPath string
+-			for _, pdPath := range filepath.SplitList("/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin") {
++			for _, pdPath := range filepath.SplitList("/app/bin:/app/sbin") {
+ 				dPath = filepath.Join(pdPath, app)
+ 				if sPath == dPath {
+ 					continue
