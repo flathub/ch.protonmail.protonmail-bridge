@@ -20,6 +20,22 @@ cleanup:
   - /include
 modules:
   - libsecret.json
+  - name: therecipe
+    buildsystem: simple
+    build-options:
+      env:
+        GOBIN: /app/bin
+    build-commands:
+      - |
+        . /usr/lib/sdk/golang/enable.sh
+        export GOPATH=$PWD/go
+        go version
+        export GO111MODULE=off
+        go install -v -tags=no_env github.com/therecipe/qt/cmd/...
+    sources:
+      - qt-sources.json
+      - type: patch
+        path: therecipe.patch
   - name: protonmail-bridge
     buildsystem: simple
     build-options:
@@ -27,11 +43,12 @@ modules:
         GOBIN: /app/bin
         BRIDGE_VERSION: 1.3.3
     build-commands:
+      - cp cmd/Desktop-Bridge/main.go .
       - |
         . /usr/lib/sdk/golang/enable.sh
         export GOPATH=$PWD/go
         go version
-        env GOFLAGS=-mod=vendor make build
+        env GOFLAGS=-mod=vendor /app/bin/qtdeploy -ldflags -tags=pmapi_prod build desktop
       - install -Dp -m 644 ${FLATPAK_ID}.metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
       - install -Dp -m 644 cmd/Desktop-Bridge/deploy/linux/logo.svg /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
       - install -Dp -m 644 ${FLATPAK_ID}.desktop /app/share/applications/${FLATPAK_ID}.desktop
@@ -39,7 +56,7 @@ modules:
       - mv cmd/Desktop-Bridge/deploy/linux/* /app/lib/protonmail/bridge/
       - ln -s /app/lib/protonmail/bridge/protonmail-bridge /app/bin/
     sources:
-      - qt-sources.json
+      - sources.json
       - type: archive
         url: https://github.com/ProtonMail/proton-bridge/archive/v1.3.3.tar.gz
         sha256: 613907baa5d5c93cebb2581adeb7259eab750cebe04a9db6873b592138686209
@@ -49,4 +66,4 @@ modules:
         path: ch.protonmail.protonmail-bridge.desktop
       - type: git
         url: https://github.com/therecipe/env_linux_amd64_513.git
-        dest: vendor-cache/github.com/therecipe/env_linux_amd64_513
+        dest: vendor/github.com/therecipe/env_linux_amd64_513
