@@ -1,11 +1,10 @@
 id: ch.protonmail.protonmail-bridge
-runtime: org.freedesktop.Platform
-sdk: org.freedesktop.Sdk
+runtime: org.kde.Platform
+sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.golang
-runtime-version: "20.08"
+runtime-version: "5.15"
 command: protonmail-bridge
-separate-locales: false
 finish-args:
   - --share=ipc
   - --socket=x11
@@ -42,13 +41,14 @@ modules:
       env:
         GOBIN: /app/bin
         BRIDGE_VERSION: 1.3.3
+        QT_PKG_CONFIG: True
     build-commands:
       - cp cmd/Desktop-Bridge/main.go .
       - |
         . /usr/lib/sdk/golang/enable.sh
         export GOPATH=$PWD/go
         go version
-        env GOFLAGS=-mod=vendor /app/bin/qtdeploy -ldflags -tags=pmapi_prod build desktop
+        env GOFLAGS=-mod=vendor /app/bin/qtdeploy -ldflags -tags=pmapi_prod build desktop .
       - install -Dp -m 644 ${FLATPAK_ID}.metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
       - install -Dp -m 644 cmd/Desktop-Bridge/deploy/linux/logo.svg /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
       - install -Dp -m 644 ${FLATPAK_ID}.desktop /app/share/applications/${FLATPAK_ID}.desktop

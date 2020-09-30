@@ -129,6 +129,18 @@
         "type": "git",
         "url": "https://github.com/ProtonMail/docker-credential-helpers",
         "tag": "v1.1.0",
+        "dest": "go/src/github.com/docker/docker-credential-helpers"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/ProtonMail/docker-credential-helpers",
+        "tag": "v1.1.0",
+        "dest": "go/src/github.com/ProtonMail/docker-credential-helpers"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/ProtonMail/docker-credential-helpers",
+        "tag": "v1.1.0",
         "dest": "vendor/github.com/docker/docker-credential-helpers"
     },
     {
