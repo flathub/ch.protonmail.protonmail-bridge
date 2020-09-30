@@ -16,6 +16,8 @@ cleanup:
   - /go
   - /bin/scripts
   - /bin/qt*
+  - /bin/secret-tool
+  - /include
 modules:
   - libsecret.json
   - name: protonmail-bridge
@@ -31,7 +33,6 @@ modules:
         . /usr/lib/sdk/golang/enable.sh
         export GOPATH=$PWD/go
         go version
-        go mod vendor
         make build
       - install -Dp -m 644 ${FLATPAK_ID}.metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
       - install -Dp -m 644 cmd/Desktop-Bridge/deploy/linux/logo.svg /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
@@ -47,3 +48,6 @@ modules:
         path: ch.protonmail.protonmail-bridge.metainfo.xml
       - type: file
         path: ch.protonmail.protonmail-bridge.desktop
+      - type: git
+        url: https://github.com/therecipe/env_linux_amd64_513.git
+        dest: vendor-cache/github.com/therecipe/env_linux_amd64_513
