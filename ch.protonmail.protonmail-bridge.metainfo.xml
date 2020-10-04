@@ -8,6 +8,9 @@
   <url type="homepage">https://protonmail.ch/bridge/</url>
   <url type="bugtracker">https://github.com/ProtonMail/proton-bridge/issues</url>
   <url type="faq">https://protonmail.com/bridge/faq</url>
+  <url type="help">
+    https://protonmail.com/support/
+  </url>
   <!-- <url type="contact">mailto:bridge@protonmail.com</url> -->
 
   <summary>
