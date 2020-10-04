@@ -1,0 +1,476 @@
+[
+    {
+        "type": "git",
+        "url": "https://github.com/0xAX/notificator",
+        "dest": "vendor/github.com/0xAX/notificator",
+        "commit": "3962a5ea8da1"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/ProtonMail/go-appdir",
+        "tag": "v1.1.0",
+        "dest": "vendor/github.com/ProtonMail/go-appdir"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/ProtonMail/go-apple-mobileconfig",
+        "dest": "vendor/github.com/ProtonMail/go-apple-mobileconfig",
+        "commit": "7ea9927a11f6"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/ProtonMail/go-autostart",
+        "dest": "vendor/github.com/ProtonMail/go-autostart",
+        "commit": "c5272053443a"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/ProtonMail/go-imap-id",
+        "dest": "vendor/github.com/ProtonMail/go-imap-id",
+        "commit": "f94a56b9ecde"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/ProtonMail/go-imap-id",
+        "dest": "vendor/github.com/emersion/go-imap-id",
+        "commit": "f94a56b9ecde"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/ProtonMail/go-mime",
+        "dest": "vendor/github.com/ProtonMail/go-mime",
+        "commit": "9b5a4261663a"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/ProtonMail/go-vcard",
+        "dest": "vendor/github.com/ProtonMail/go-vcard",
+        "commit": "33aaa0a0c8a5"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/ProtonMail/gopenpgp",
+        "tag": "v2.0.1",
+        "dest": "vendor/github.com/ProtonMail/gopenpgp/v2"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/abiosoft/ishell",
+        "tag": "v2.0.0",
+        "dest": "vendor/github.com/abiosoft/ishell"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/abiosoft/readline",
+        "dest": "vendor/github.com/abiosoft/readline",
+        "commit": "155bce2042db"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/allan-simon/go-singleinstance",
+        "dest": "vendor/github.com/allan-simon/go-singleinstance",
+        "commit": "79edcfdc2dfc"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/andybalholm/cascadia",
+        "tag": "v1.1.0",
+        "dest": "vendor/github.com/andybalholm/cascadia"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/cention-sany/utf7",
+        "dest": "vendor/github.com/emersion/utf7",
+        "commit": "26cad61bd60a"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/cention-sany/utf7",
+        "dest": "vendor/github.com/cention-sany/utf7",
+        "commit": "26cad61bd60a"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/certifi/gocertifi",
+        "dest": "vendor/github.com/certifi/gocertifi",
+        "commit": "c7c1fbc02894"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/cpuguy83/go-md2man",
+        "dest": "vendor/github.com/cpuguy83/go-md2man/v2",
+        "commit": "f79a8a8ca69d"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/cucumber/godog",
+        "tag": "v0.8.1",
+        "dest": "vendor/github.com/cucumber/godog"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/danieljoos/wincred",
+        "tag": "v1.1.0",
+        "dest": "vendor/github.com/danieljoos/wincred"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/davecgh/go-spew",
+        "tag": "v1.1.1",
+        "dest": "vendor/github.com/davecgh/go-spew"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/ProtonMail/docker-credential-helpers",
+        "tag": "v1.1.0",
+        "dest": "vendor/github.com/ProtonMail/docker-credential-helpers"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/ProtonMail/docker-credential-helpers",
+        "tag": "v1.1.0",
+        "dest": "go/src/github.com/docker/docker-credential-helpers"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/ProtonMail/docker-credential-helpers",
+        "tag": "v1.1.0",
+        "dest": "go/src/github.com/ProtonMail/docker-credential-helpers"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/ProtonMail/docker-credential-helpers",
+        "tag": "v1.1.0",
+        "dest": "vendor/github.com/docker/docker-credential-helpers"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/jameshoulahan/go-imap",
+        "dest": "vendor/github.com/jameshoulahan/go-imap",
+        "commit": "d57327f48843"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/jameshoulahan/go-imap",
+        "dest": "vendor/github.com/emersion/go-imap",
+        "commit": "d57327f48843"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/emersion/go-imap-appendlimit",
+        "dest": "vendor/github.com/emersion/go-imap-appendlimit",
+        "commit": "25671c986a6a"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/emersion/go-imap-idle",
+        "dest": "vendor/github.com/emersion/go-imap-idle",
+        "commit": "f05f54664cc4"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/emersion/go-imap-move",
+        "dest": "vendor/github.com/emersion/go-imap-move",
+        "commit": "6e5a51a5b342"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/emersion/go-imap-quota",
+        "dest": "vendor/github.com/emersion/go-imap-quota",
+        "commit": "dcfd1b7d2b41"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/emersion/go-imap-specialuse",
+        "dest": "vendor/github.com/emersion/go-imap-specialuse",
+        "commit": "ba031ced6a62"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/emersion/go-imap-unselect",
+        "dest": "vendor/github.com/emersion/go-imap-unselect",
+        "commit": "b985794e5f26"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/emersion/go-sasl",
+        "dest": "vendor/github.com/emersion/go-sasl",
+        "commit": "430746ea8b9b"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/ProtonMail/go-smtp",
+        "dest": "vendor/github.com/ProtonMail/go-smtp",
+        "commit": "8261df20d309"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/ProtonMail/go-smtp",
+        "dest": "vendor/github.com/emersion/go-smtp",
+        "commit": "8261df20d309"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/emersion/go-textwrapper",
+        "dest": "vendor/github.com/emersion/go-textwrapper",
+        "commit": "d0e65e56babe"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/fatih/color",
+        "tag": "v1.9.0",
+        "dest": "vendor/github.com/fatih/color"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/flynn-archive/go-shlex",
+        "dest": "vendor/github.com/flynn-archive/go-shlex",
+        "commit": "3f9db97f8568"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/getsentry/raven-go",
+        "tag": "v0.2.0",
+        "dest": "vendor/github.com/getsentry/raven-go"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/go-resty/resty",
+        "tag": "v2.2.0",
+        "dest": "vendor/github.com/go-resty/resty/v2"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/gogs/chardet",
+        "dest": "vendor/github.com/gogs/chardet",
+        "commit": "2404f7772561"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/golang/mock",
+        "tag": "v1.4.3",
+        "dest": "vendor/github.com/golang/mock"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/google/go-cmp",
+        "tag": "v0.4.0",
+        "dest": "vendor/github.com/google/go-cmp"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/gopherjs/gopherjs",
+        "dest": "vendor/github.com/gopherjs/gopherjs",
+        "commit": "3e4dfb77656c"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/hashicorp/errwrap",
+        "tag": "v1.0.0",
+        "dest": "vendor/github.com/hashicorp/errwrap"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/hashicorp/go-multierror",
+        "tag": "v1.0.0",
+        "dest": "vendor/github.com/hashicorp/go-multierror"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/ProtonMail/bcrypt",
+        "dest": "vendor/github.com/ProtonMail/bcrypt",
+        "commit": "7509ea014998"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/ProtonMail/bcrypt",
+        "dest": "vendor/github.com/jameskeane/bcrypt",
+        "commit": "7509ea014998"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/jaytaylor/html2text",
+        "dest": "vendor/github.com/jaytaylor/html2text",
+        "commit": "61d9dc4d7195"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/jhillyerd/enmime",
+        "tag": "v0.8.0",
+        "dest": "vendor/github.com/jhillyerd/enmime"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/kardianos/osext",
+        "dest": "vendor/github.com/kardianos/osext",
+        "commit": "2bc1f35cddc0"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/keybase/go-keychain",
+        "dest": "vendor/github.com/keybase/go-keychain",
+        "commit": "86d4642e4ce2"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/konsorten/go-windows-terminal-sequences",
+        "tag": "v1.0.2",
+        "dest": "vendor/github.com/konsorten/go-windows-terminal-sequences"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/logrusorgru/aurora",
+        "dest": "vendor/github.com/logrusorgru/aurora",
+        "commit": "e9ef32dff381"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/mattn/go-colorable",
+        "tag": "v0.1.4",
+        "dest": "vendor/github.com/mattn/go-colorable"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/mattn/go-isatty",
+        "tag": "v0.0.11",
+        "dest": "vendor/github.com/mattn/go-isatty"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/mattn/go-runewidth",
+        "tag": "v0.0.4",
+        "dest": "vendor/github.com/mattn/go-runewidth"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/miekg/dns",
+        "tag": "v1.1.29",
+        "dest": "vendor/github.com/miekg/dns"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/nsf/jsondiff",
+        "dest": "vendor/github.com/nsf/jsondiff",
+        "commit": "8443391ee9b6"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/olekukonko/tablewriter",
+        "tag": "v0.0.1",
+        "dest": "vendor/github.com/olekukonko/tablewriter"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/pkg/errors",
+        "tag": "v0.9.1",
+        "dest": "vendor/github.com/pkg/errors"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/pmezard/go-difflib",
+        "tag": "v1.0.0",
+        "dest": "vendor/github.com/pmezard/go-difflib"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/russross/blackfriday",
+        "tag": "v2.0.1",
+        "dest": "vendor/github.com/russross/blackfriday/v2"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/shurcooL/sanitized_anchor_name",
+        "tag": "v1.0.0",
+        "dest": "vendor/github.com/shurcooL/sanitized_anchor_name"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/sirupsen/logrus",
+        "tag": "v1.4.2",
+        "dest": "vendor/github.com/sirupsen/logrus"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/skratchdot/open-golang",
+        "dest": "vendor/github.com/skratchdot/open-golang",
+        "commit": "eef842397966"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/ssor/bom",
+        "dest": "vendor/github.com/ssor/bom",
+        "commit": "6386211fdfcf"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/stretchr/testify",
+        "tag": "v1.5.1",
+        "dest": "vendor/github.com/stretchr/testify"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/therecipe/qt",
+        "dest": "vendor/github.com/therecipe/qt",
+        "commit": "5074eb6d8c41"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/twinj/uuid",
+        "tag": "v1.0.0",
+        "dest": "vendor/github.com/twinj/uuid"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/urfave/cli",
+        "tag": "v1.22.3",
+        "dest": "vendor/github.com/urfave/cli"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/etcd-io/bbolt",
+        "tag": "v1.3.5",
+        "dest": "vendor/go.etcd.io/bbolt"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/ProtonMail/crypto",
+        "dest": "vendor/github.com/ProtonMail/crypto",
+        "commit": "1fa7f403fb9c"
+    },
+    {
+        "type": "git",
+        "url": "https://github.com/ProtonMail/crypto",
+        "dest": "vendor/golang.org/x/crypto",
+        "commit": "1fa7f403fb9c"
+    },
+    {
+        "type": "git",
+        "url": "https://go.googlesource.com/net",
+        "dest": "vendor/golang.org/x/net",
+        "commit": "244492dfa37a"
+    },
+    {
+        "type": "git",
+        "url": "https://go.googlesource.com/sys",
+        "dest": "vendor/golang.org/x/sys",
+        "commit": "d101bd2416d5"
+    },
+    {
+        "type": "git",
+        "url": "https://go.googlesource.com/text",
+        "tag": "v0.3.2",
+        "dest": "vendor/golang.org/x/text"
+    },
+    {
+        "type": "git",
+        "url": "https://go.googlesource.com/xerrors",
+        "dest": "vendor/golang.org/x/xerrors",
+        "commit": "9bdfabe68543"
+    },
+    {
+        "type": "git",
+        "url": "https://gopkg.in/yaml.v2",
+        "tag": "v2.2.2",
+        "dest": "vendor/gopkg.in/yaml.v2"
+    }
+]

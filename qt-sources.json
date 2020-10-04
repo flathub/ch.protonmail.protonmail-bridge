@@ -1,0 +1,38 @@
+[
+  {
+    "type": "git",
+    "url": "https://go.googlesource.com/tools",
+    "commit": "d56e4e40bc9dd04985b18718e43413d9f4399fb5",
+    "dest": "go/src/golang.org/x/tools"
+  },
+  {
+    "type": "git",
+    "url": "https://go.googlesource.com/sys",
+    "commit": "efd3b9a0ff205c921c51961c1c9bb8728bd0ce1b",
+    "dest": "go/src/golang.org/x/sys"
+  },
+  {
+    "type": "git",
+    "url": "https://go.googlesource.com/mod",
+    "commit": "ce943fd02449f621243c9ea6e64098e84752b92b",
+    "dest": "go/src/golang.org/x/mod"
+  },
+  {
+    "type": "git",
+    "url": "https://go.googlesource.com/xerrors",
+    "commit": "5ec99f83aff198f5fbd629d6c8d8eb38a04218ca",
+    "dest": "go/src/golang.org/x/xerrors"
+  },
+  {
+    "type": "git",
+    "url": "https://github.com/sirupsen/logrus",
+    "commit": "6699a89a232f3db797f2e280639854bbc4b89725",
+    "dest": "go/src/github.com/sirupsen/logrus"
+  },
+  {
+    "type": "git",
+    "url": "https://github.com/therecipe/qt",
+    "commit": "c0c124a5770d357908f16fa57e0aa0ec6ccd3f91",
+    "dest": "go/src/github.com/therecipe/qt"
+  }
+]

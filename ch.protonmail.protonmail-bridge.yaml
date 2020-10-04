@@ -1,33 +1,71 @@
 id: ch.protonmail.protonmail-bridge
-runtime: org.freedesktop.Platform
-sdk: org.freedesktop.Sdk
-runtime-version: "19.08"
+runtime: org.kde.Platform
+sdk: org.kde.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.golang
+runtime-version: "5.15"
 command: protonmail-bridge
-separate-locales: false
 finish-args:
   - --share=ipc
   - --socket=x11
   - --share=network
   - --device=dri
   - --talk-name=org.freedesktop.secrets
+cleanup:
+  - /go
+  - /bin/scripts
+  - /bin/qt*
+  - /bin/secret-tool
+  - /include
 modules:
   - libsecret.json
+  - name: therecipe
+    buildsystem: simple
+    build-options:
+      env:
+        GOBIN: /app/bin
+    build-commands:
+      - |
+        . /usr/lib/sdk/golang/enable.sh
+        export GOPATH=$PWD/go
+        go version
+        export GO111MODULE=off
+        go install -v -tags=no_env github.com/therecipe/qt/cmd/...
+    sources:
+      - qt-sources.json
+      - type: patch
+        path: therecipe.patch
   - name: protonmail-bridge
     buildsystem: simple
+    build-options:
+      env:
+        GOBIN: /app/bin
+        BRIDGE_VERSION: 1.3.3
+        QT_PKG_CONFIG: True
     build-commands:
+      - cp go/src/github.com/ProtonMail/proton-bridge/{cmd/Desktop-Bridge/main.go,}
+      - |
+        . /usr/lib/sdk/golang/enable.sh
+        export GOPATH=$PWD/go
+        go version
+        cd go/src/github.com/ProtonMail/proton-bridge
+        /app/bin/qtdeploy -ldflags -tags=pmapi_prod build desktop
       - install -Dp -m 644 ${FLATPAK_ID}.metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
-      - ar x protonmail-bridge.deb
-      - tar -xf data.tar.xz
-      - mv usr/lib/* /app/lib/
-      - install -Dp -m 644 usr/share/icons/hicolor/scalable/apps/protonmail-bridge.svg /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
-      - install -Dp -m 644 usr/share/applications/protonmail-bridge.desktop /app/share/applications/${FLATPAK_ID}.desktop
-      - desktop-file-edit --set-key="Icon" --set-value=${FLATPAK_ID} /app/share/applications/${FLATPAK_ID}.desktop
-      - desktop-file-edit --set-key="Categories" --set-value="Office;Email" /app/share/applications/${FLATPAK_ID}.desktop
+      - install -Dp -m 644 cmd/Desktop-Bridge/deploy/linux/logo.svg /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
+      - install -Dp -m 644 ${FLATPAK_ID}.desktop /app/share/applications/${FLATPAK_ID}.desktop
+      - mkdir -p /app/lib/protonmail/bridge
+      - mv cmd/Desktop-Bridge/deploy/linux/* /app/lib/protonmail/bridge/
       - ln -s /app/lib/protonmail/bridge/protonmail-bridge /app/bin/
     sources:
-      - type: file
-        dest-filename: protonmail-bridge.deb
-        url: https://protonmail.com/download/protonmail-bridge_1.2.7-1_amd64.deb
-        sha256: 2ed3d699af65ba61def5440597eee58165c5e0b72926bac8cd99d0e976d2b327
+      - sources.json
+      - type: archive
+        url: https://github.com/ProtonMail/proton-bridge/archive/v1.3.3.tar.gz
+        sha256: 613907baa5d5c93cebb2581adeb7259eab750cebe04a9db6873b592138686209
+        dest: go/src/github.com/ProtonMail/proton-bridge
       - type: file
         path: ch.protonmail.protonmail-bridge.metainfo.xml
+      - type: file
+        path: ch.protonmail.protonmail-bridge.desktop
+      - type: git
+        url: https://github.com/therecipe/env_linux_amd64_513.git
+        dest: vendor/github.com/therecipe/env_linux_amd64_513
