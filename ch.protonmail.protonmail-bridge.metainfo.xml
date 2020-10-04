@@ -6,6 +6,9 @@
   <metadata_license>CC0-1.0</metadata_license>
   <developer_name>Proton Technologies AG</developer_name>
   <url type="homepage">https://protonmail.ch/bridge/</url>
+  <url type="bugtracker">https://github.com/ProtonMail/proton-bridge/issues</url>
+  <url type="faq">https://protonmail.com/bridge/faq</url>
+  <!-- <url type="contact">mailto:bridge@protonmail.com</url> -->
 
   <summary>
     Seamlessly encrypts and decrypts your mail as it enters and leaves your computer
