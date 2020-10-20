@@ -1,7 +1,7 @@
 id: ch.protonmail.protonmail-bridge
 runtime: org.freedesktop.Platform
 sdk: org.freedesktop.Sdk
-runtime-version: "20.08"
+runtime-version: '20.08'
 command: protonmail-bridge
 separate-locales: false
 finish-args:
@@ -19,7 +19,8 @@ modules:
       - ar x protonmail-bridge.deb
       - tar -xf data.tar.xz
       - mv usr/lib/* /app/lib/
-      - install -Dp -m 644 usr/share/icons/hicolor/scalable/apps/protonmail-bridge.svg /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
+      - install -Dp -m 644 usr/share/icons/hicolor/scalable/apps/protonmail-bridge.svg
+        /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
       - install -Dp -m 644 usr/share/applications/protonmail-bridge.desktop /app/share/applications/${FLATPAK_ID}.desktop
       - desktop-file-edit --set-key="Icon" --set-value=${FLATPAK_ID} /app/share/applications/${FLATPAK_ID}.desktop
       - desktop-file-edit --set-key="Categories" --set-value="Office;Email" /app/share/applications/${FLATPAK_ID}.desktop
@@ -27,12 +28,13 @@ modules:
     sources:
       - type: file
         dest-filename: protonmail-bridge.deb
-        url: https://protonmail.com/download/protonmail-bridge_1.3.3-1_amd64.deb
-        sha256: 5265f10ec78a1051ed816910f55aa8b1ebfca53f747df38dc8af27f214105ca0
+        url: https://protonmail.com/download/protonmail-bridge_1.4.4-1_amd64.deb
+        sha256: 52540af98535ed78408eba66f6f74c46abfb7450fa703ece256ab84d0bd7a4f2
         x-checker-data:
           type: html
           url: https://protonmail.com/download/current_version_linux.json
           version-pattern: protonmail-bridge_([\d.]+\d+(?:-\d+)?)_amd64.deb
           url-template: https://protonmail.com/download/protonmail-bridge_${version}_amd64.deb
+        size: 38462466
       - type: file
         path: ch.protonmail.protonmail-bridge.metainfo.xml
