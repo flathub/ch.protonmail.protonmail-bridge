@@ -41,6 +41,27 @@
   </screenshots>
 
   <releases>
+    <release version="1.4.4" date="2020-10-20">
+        <p>
+          Release Notes:
+        </p>
+        <ul>
+          <li>Bulletproofing against any potential data loss and/or duplication</li>
+          <li>Performance improvements for handling attachments and non-standard formatting</li>
+          <li>Better stability of the message parser</li>
+          <li>Additional foreign encoding support for outgoing messages</li>
+          <li>Complete refactor of the way messages are parsed to simplify code maintenance</li>
+          <li>Improved User-Agent detection</li>
+          <li>Added MacOS Big Sur compatibility</li>
+          <li>Added persistent anonymous API cookies</li>
+        </ul>
+        <p>Fixed Bugs:</p>
+        <ul>
+          <li>Fixed rare mail loss when moving from Spam folder</li>
+          <li>Limited log size</li>
+          <li>Fixed Linux font issues (mouse hover)</li>
+        </ul>
+    </release>
     <release version="1.3.3" date="2020-08-12">
       <description>
         <p>
