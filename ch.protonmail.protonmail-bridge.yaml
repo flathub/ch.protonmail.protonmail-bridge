@@ -28,13 +28,13 @@ modules:
     sources:
       - type: file
         dest-filename: protonmail-bridge.deb
-        url: https://protonmail.com/download/protonmail-bridge_1.4.5-1_amd64.deb
-        sha256: 98a71d43e16c1b1b0f6e4c82fd517351908c28b488f3f853c6b1ea8bf0ebb821
+        url: https://protonmail.com/download/protonmail-bridge_1.5.0-1_amd64.deb
+        sha256: d6d0f2b612440f277361d415d649eb78c2e2e14ba3774408fdd917dc39ba2c21
         x-checker-data:
           type: html
           url: https://protonmail.com/download/current_version_linux.json
           version-pattern: protonmail-bridge_([\d.]+\d+(?:-\d+)?)_amd64.deb
           url-template: https://protonmail.com/download/protonmail-bridge_${version}_amd64.deb
-        size: 38467838
+        size: 38875334
       - type: file
         path: ch.protonmail.protonmail-bridge.metainfo.xml
