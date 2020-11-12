@@ -41,7 +41,23 @@
   </screenshots>
 
   <releases>
-    <release version="1.5.0-1" date="2020-11-12"/>
+    <release version="1.5.0" date="2020-11-12">
+      <p>
+        Release Notes:
+      </p>
+      <ul>
+        <li>Ensured better message flow by refactoring both address and date parsing</li>
+        <li>Improved secure connectivity checks</li>
+        <li>Better deb packaging</li>
+        <li>More robust error handling</li>
+      </ul>
+      <p>Fixed Bugs:</p>
+      <ul>
+        <li>Ensured that conversations are properly threaded</li>
+        <li>Fixed Linux font issues (Fedora)</li>
+        <li>Better handling of Mime encrypted messages</li>
+      </ul>
+    </release>
     <release version="1.4.5" date="2020-10-22"/>
     <release version="1.4.4" date="2020-10-20">
         <p>
