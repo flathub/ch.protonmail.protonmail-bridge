@@ -41,6 +41,24 @@
   </screenshots>
 
   <releases>
+    <release version="1.5.2" date="2020-11-25">
+      <p>
+        Release Notes:
+      </p>
+      <ul>
+        <li>Improved package creation logic</li>
+        <li>Refactor of sending functions to simplify code maintenance</li>
+        <li>Added tests for package creation</li>
+        <li>For more detailed summary of the changes see https://github.com/ProtonMail/proton-bridge/blob/master/Changelog.md</li>
+      </ul>
+      <p>Fixed Bugs:</p>
+      <ul>
+        <li>Bridge crashes related to labels handling</li>
+        <li>GUI popup related to TLS connection error</li>
+        <li>An issue where a random session key is included in the data payload</li>
+        <li>Error handling (including improved detection)</li>
+      </ul>
+    </release>
     <release version="1.5.0" date="2020-11-12">
       <p>
         Release Notes:
