@@ -17,7 +17,7 @@ modules:
     build-commands:
       - install -Dp -m 644 ${FLATPAK_ID}.metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
       - ar x protonmail-bridge.deb
-      - tar -xf data.tar.xz
+      - tar -xf data.tar.gz
       - mv usr/lib/* /app/lib/
       - install -Dp -m 644 usr/share/icons/hicolor/scalable/apps/protonmail-bridge.svg
         /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
@@ -28,13 +28,12 @@ modules:
     sources:
       - type: file
         dest-filename: protonmail-bridge.deb
-        url: https://protonmail.com/download/protonmail-bridge_1.5.2-1_amd64.deb
-        sha256: c2d7d2c05f2d5dd0a5e573b1f513c4736fd8e20c85c11f0f59c7450af5a49e25
+        url: https://protonmail.com/download/protonmail-bridge_1.5.4-1_amd64.deb
+        sha256: 02ebf9a325c359c8ad40c29766255c41e9a57f07766284a2217314264ecf2e73
         x-checker-data:
           type: html
           url: https://protonmail.com/download/current_version_linux.json
           version-pattern: protonmail-bridge_([\d.]+\d+(?:-\d+)?)_amd64.deb
           url-template: https://protonmail.com/download/protonmail-bridge_${version}_amd64.deb
-        size: 38813142
       - type: file
         path: ch.protonmail.protonmail-bridge.metainfo.xml
