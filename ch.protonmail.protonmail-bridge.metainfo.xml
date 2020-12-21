@@ -41,6 +41,20 @@
   </screenshots>
 
   <releases>
+    <release version="1.5.4" date="2020-12-21">
+      <p>Release Notes:</p>
+      <ul>
+        <li>Support read confirmations</li>
+        <li>Adding GPLv3 licence button to the GUI</li>
+        <li>Improved testing</li>
+      </ul>
+      <p>Release Notes:</p>
+      <ul>
+        <li>AppleMail crashes (timestamp related)</li>
+        <li>Encoding errors</li>
+        <li>Installation issues on linux</li>
+      </ul>
+    </release>
     <release version="1.5.2" date="2020-11-25">
       <p>
         Release Notes:
