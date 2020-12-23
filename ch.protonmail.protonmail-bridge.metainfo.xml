@@ -41,6 +41,7 @@
   </screenshots>
 
   <releases>
+    <release version="1.5.4-1" date="2020-12-23"/>
     <release version="1.5.4" date="2020-12-21">
       <p>Release Notes:</p>
       <ul>
