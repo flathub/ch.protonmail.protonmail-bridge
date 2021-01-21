@@ -41,6 +41,20 @@
   </screenshots>
 
   <releases>
+    <release version="1.5.6" date="2021-01-21">
+      <p>Release Notes:</p>
+      <ul>
+        <li>Improvements to message parsing</li>
+        <li>Better error handling</li>
+      </ul>
+      <p>Fixed Bugs:</p>
+      <ul>
+        <li>Message corruption - rare cases of overly long headers</li>
+        <li>AppleMail crashes (related to timestamps)\n• Sending messages from aliases in combined inbox mode</li>
+        <li>Fedora font issues</li>
+      </ul>
+      <p>For more detailed summary of the changes see https://github.com/ProtonMail/proton-bridge/blob/master/Changelog.md</p>
+    </release>
     <release version="1.5.4" date="2020-12-21">
       <p>Release Notes:</p>
       <ul>
@@ -48,7 +62,7 @@
         <li>Adding GPLv3 licence button to the GUI</li>
         <li>Improved testing</li>
       </ul>
-      <p>Release Notes:</p>
+      <p>Fixed Bugs:</p>
       <ul>
         <li>AppleMail crashes (timestamp related)</li>
         <li>Encoding errors</li>
