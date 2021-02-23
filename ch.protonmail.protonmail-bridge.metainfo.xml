@@ -41,6 +41,13 @@
   </screenshots>
 
   <releases>
+    <release version="1.6.3" date="2021-02-16">
+      <p>Release Notes:</p>
+      <ul>
+        <li>Introducing silent updates with 'early' and 'stable' updates channels</li>
+        <li>Changing the distribution of release notes</li>
+      </ul>
+    </release>
     <release version="1.5.7" date="2021-01-22">
       <p>Fixed Bugs:</p>
       <ul>

@@ -12,6 +12,15 @@ finish-args:
   - --talk-name=org.freedesktop.secrets
 modules:
   - libsecret.json
+  - name: fake-gnome-keyring
+    buildsystem: simple
+    build-commands:
+      - install -Dp -m 744 gnome-keyring /app/bin/gnome-keyring
+    sources:
+      - type: script
+        commands:
+          - echo "I am totally am gnome-keyring"
+        dest-filename: gnome-keyring
   - name: protonmail-bridge
     buildsystem: simple
     build-commands:
@@ -24,12 +33,12 @@ modules:
       - install -Dp -m 644 usr/share/applications/protonmail-bridge.desktop /app/share/applications/${FLATPAK_ID}.desktop
       - desktop-file-edit --set-key="Icon" --set-value=${FLATPAK_ID} /app/share/applications/${FLATPAK_ID}.desktop
       - desktop-file-edit --set-key="Categories" --set-value="Office;Email" /app/share/applications/${FLATPAK_ID}.desktop
-      - ln -s /app/lib/protonmail/bridge/protonmail-bridge /app/bin/
+      - ln -s /app/lib/protonmail/bridge/proton-bridge /app/bin/protonmail-bridge
     sources:
       - type: file
         dest-filename: protonmail-bridge.deb
-        url: https://protonmail.com/download/protonmail-bridge_1.5.7-1_amd64.deb
-        sha256: 2cdf0da76c1e3ee75f0d636472cc946fb3148066ebdc48b4cfb7953a00b46a70
+        url: https://protonmail.com/download/protonmail-bridge_1.6.3-1_amd64.deb
+        sha256: 665e5cc65f8c5ca11435c465b46eaf1907d92bb72a407c8bd3195adaf5000d2d
         x-checker-data:
           type: html
           url: https://protonmail.com/download/current_version_linux.json
