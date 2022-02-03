@@ -37,8 +37,8 @@ modules:
     sources:
       - type: file
         dest-filename: protonmail-bridge.deb
-        url: https://protonmail.com/download/bridge/protonmail-bridge_1.8.12-1_amd64.deb
-        sha256: 90eff7d27e4835e3a204019cafa7062467ec45688a1a6d407896976bdeb1f8ea
+        url: https://protonmail.com/download/bridge/protonmail-bridge_2.1.0-1_amd64.deb
+        sha256: 7d78b17558b729fa54e8b696ece17e8597f05cc7286208229d83ac6a6885fb01
         x-checker-data:
           type: html
           url: https://protonmail.com/download/current_version_linux.json
