@@ -1,9 +1,8 @@
 id: ch.protonmail.protonmail-bridge
 runtime: org.kde.Platform
 sdk: org.kde.Sdk
-runtime-version: '5.15'
+runtime-version: '5.15-21.08'
 command: protonmail-bridge
-separate-locales: false
 finish-args:
   - --share=ipc
   - --socket=x11
