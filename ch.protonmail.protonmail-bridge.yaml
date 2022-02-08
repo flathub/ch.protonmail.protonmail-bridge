@@ -39,9 +39,9 @@ modules:
         url: https://protonmail.com/download/bridge/protonmail-bridge_2.1.0-1_amd64.deb
         sha256: 7d78b17558b729fa54e8b696ece17e8597f05cc7286208229d83ac6a6885fb01
         x-checker-data:
-          type: html
+          type: json
           url: https://protonmail.com/download/current_version_linux.json
-          version-pattern: protonmail-bridge_([\d.]+\d+(?:-\d+)?)_amd64.deb
-          url-template: https://protonmail.com/download/bridge/protonmail-bridge_${version}_amd64.deb
+          version-query: .Version
+          url-query: .DebFile
       - type: file
         path: ch.protonmail.protonmail-bridge.metainfo.xml
