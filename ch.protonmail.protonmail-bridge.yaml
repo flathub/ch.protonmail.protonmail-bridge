@@ -11,15 +11,6 @@ finish-args:
   - --talk-name=org.freedesktop.secrets
 modules:
   - libsecret.json
-  - name: fake-gnome-keyring
-    buildsystem: simple
-    build-commands:
-      - install -Dp -m 744 gnome-keyring /app/bin/gnome-keyring
-    sources:
-      - type: script
-        commands:
-          - echo "I am totally am gnome-keyring"
-        dest-filename: gnome-keyring
   - name: protonmail-bridge
     buildsystem: simple
     build-commands:
