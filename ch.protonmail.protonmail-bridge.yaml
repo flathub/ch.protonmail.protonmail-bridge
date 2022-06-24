@@ -10,7 +10,7 @@ finish-args:
   - --device=dri
   - --talk-name=org.freedesktop.secrets
 modules:
-  - libsecret.json
+  - shared-modules/libsecret/libsecret.json
   - name: protonmail-bridge
     buildsystem: simple
     build-commands:
