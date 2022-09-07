@@ -1,7 +1,7 @@
 id: ch.protonmail.protonmail-bridge
 runtime: org.freedesktop.Platform
 sdk: org.freedesktop.Sdk
-runtime-version: '21.08'
+runtime-version: '22.08'
 command: protonmail-bridge
 finish-args:
   - --share=ipc
