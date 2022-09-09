@@ -9,6 +9,7 @@ finish-args:
   - --share=network
   - --device=dri
   - --talk-name=org.freedesktop.secrets
+  - --filesystem=xdg-config/autostart:create
 modules:
   - libsecret.json
   - name: protonmail-bridge
