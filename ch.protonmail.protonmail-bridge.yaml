@@ -9,6 +9,7 @@ finish-args:
   - --share=network
   - --device=dri
   - --talk-name=org.freedesktop.secrets
+  - --talk-name=org.kde.StatusNotifierWatcher
 modules:
   - shared-modules/libsecret/libsecret.json
   - name: protonmail-bridge
