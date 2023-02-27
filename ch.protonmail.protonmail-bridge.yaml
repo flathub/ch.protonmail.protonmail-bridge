@@ -12,6 +12,28 @@ finish-args:
   - --talk-name=org.kde.StatusNotifierWatcher
 modules:
   - shared-modules/libsecret/libsecret.json
+  - name: krb5
+    subdir: src
+    config-opts:
+      - --localstatedir=/var/lib
+      - --sbindir=${FLATPAK_DEST}/bin
+      - --disable-stati
+      - --disable-rpath
+    cleanup:
+      - /bin
+      - /include
+      - /lib/pkgconfig
+      - /share/et
+      - /share/examples
+      - /share/ma
+    sources:
+      - type: archive
+        url: https://github.com/krb5/krb5/archive/refs/tags/krb5-1.20.1-final.tar.gz
+        sha256: ec3861c3bec29aa8da9281953c680edfdab1754d1b1db8761c1d824e4b25496a
+      - type: shell
+        dest: src
+        commands:
+          - autoreconf -si
   - name: protonmail-bridge
     buildsystem: simple
     build-commands:
