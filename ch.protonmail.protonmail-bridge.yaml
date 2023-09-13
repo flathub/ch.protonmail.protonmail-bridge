@@ -5,7 +5,8 @@ runtime-version: '23.08'
 command: protonmail-bridge
 finish-args:
   - --share=ipc
-  - --socket=x11
+  - --socket=wayland
+  - --socket=fallback-x11
   - --share=network
   - --device=dri
   - --talk-name=org.freedesktop.secrets
