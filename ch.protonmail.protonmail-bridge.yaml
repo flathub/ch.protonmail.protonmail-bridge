@@ -51,8 +51,8 @@ modules:
     sources:
       - type: file
         dest-filename: protonmail-bridge.deb
-        url: https://github.com/ProtonMail/proton-bridge/releases/download/v3.5.3/protonmail-bridge_3.5.3-1_amd64.deb
-        sha256: bb0c263fd316c1276ecfd7905483cfdf782fb35767b610cdd9d56868f938cabd
+        url: https://github.com/ProtonMail/proton-bridge/releases/download/v3.5.4/protonmail-bridge_3.5.4-1_amd64.deb
+        sha256: 2de6162e3a7b300fb3c36d6cc09937fe7dbee33bd2bcc8779c226e518e4ad382
         x-checker-data:
           type: json
           url: https://api.github.com/repos/ProtonMail/proton-bridge/releases/latest
