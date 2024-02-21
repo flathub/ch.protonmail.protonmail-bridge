@@ -31,7 +31,7 @@
   </description>
 
   <screenshots>
-    <screenshot>
+    <screenshot type="default">
       <image type="source">
         https://github.com/flathub/ch.protonmail.protonmail-bridge/raw/master/screenshots/bridge.png
       </image>
