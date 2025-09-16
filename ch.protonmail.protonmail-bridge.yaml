@@ -1,7 +1,7 @@
 id: ch.protonmail.protonmail-bridge
 runtime: org.freedesktop.Platform
 sdk: org.freedesktop.Sdk
-runtime-version: '24.08'
+runtime-version: '25.08'
 command: protonmail-bridge
 finish-args:
   - --share=ipc
@@ -29,8 +29,8 @@ modules:
       - /share/ma
     sources:
       - type: archive
-        url: https://github.com/krb5/krb5/archive/refs/tags/krb5-1.21.3-final.tar.gz
-        sha256: 2157d92020d408ed63ebcd886a92d1346a1383b0f91123a0473b4f69b4a24861
+        url: https://github.com/krb5/krb5/archive/refs/tags/krb5-1.22.1-final.tar.gz
+        sha256: d7dd1ded54c1c2d3381da4a266935feda6ba6398155720df27e2975bd5a39239
       - type: shell
         dest: src
         commands:
