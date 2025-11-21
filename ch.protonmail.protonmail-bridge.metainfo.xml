@@ -38,11 +38,13 @@
       <image type="source">
         https://github.com/flathub/ch.protonmail.protonmail-bridge/raw/master/screenshots/bridge.png
       </image>
+      <caption>ProtonMail Bridge main screen.</caption>
     </screenshot>
     <screenshot>
       <image type="source">
         https://github.com/flathub/ch.protonmail.protonmail-bridge/raw/master/screenshots/bridge-conf.png
       </image>
+      <caption>ProtonMail Bridge Settings screen.</caption>
     </screenshot>
   </screenshots>
 
