@@ -6,7 +6,7 @@ tracker](https://github.com/flathub/ch.protonmail.protonmail-bridge/issues).
 
 ### Autostart
 
-To start automatically on login, create the file `~/.config/autostart/Proton Mail Desktop` with the following contents:
+To start automatically on login, create the file `~/.config/autostart/ch.protonmail.protonmail-bridge.desktop` with the following contents:
 
 ```
 [Desktop Entry]
