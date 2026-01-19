@@ -12,7 +12,6 @@ finish-args:
   - --talk-name=org.freedesktop.secrets
   - --talk-name=org.kde.StatusNotifierWatcher
 modules:
-  - shared-modules/libsecret/libsecret.json
   - name: krb5
     subdir: src
     config-opts:
