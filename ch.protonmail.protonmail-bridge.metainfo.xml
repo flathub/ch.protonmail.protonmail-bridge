@@ -11,6 +11,7 @@
   <url type="homepage">https://proton.me/mail/bridge</url>
   <url type="bugtracker">https://github.com/flathub/ch.protonmail.protonmail-bridge/issues</url>
   <url type="faq">https://proton.me/support/protonmail-bridge-faq</url>
+  <url type="vcs-browser">https://github.com/flathub/ch.protonmail.protonmail-bridge</url>
   <url type="help">
     https://proton.me/support/mail
   </url>
