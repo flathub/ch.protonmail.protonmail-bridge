@@ -34,6 +34,20 @@ modules:
         dest: src
         commands:
           - autoreconf -si
+  - name: libcbor
+    buildsystem: cmake
+    sources:
+      - type: git
+        url: https://github.com/PJK/libcbor
+        tag: v0.13.0
+        commit: 9826a4315116a588f7416912db9da6fcecd8da11
+  - name: libfido2
+    buildsystem: cmake
+    sources:
+      - type: git
+        url: https://github.com/Yubico/libfido2
+        tag: 1.16.0
+        commit: 7dc6b3c52d441c64a4235ae276a23865243395a1
   - name: protonmail-bridge
     buildsystem: simple
     build-commands:
