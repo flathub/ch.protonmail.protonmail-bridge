@@ -258,4 +258,11 @@
 
   <content_rating type="oars-1.1"/>
   <update_contact>msandova_at_protonmail.com</update_contact>
+  <keywords>
+    <keyword>email encryption</keyword>
+    <keyword>secure email client</keyword>
+    <keyword>proton mail bridge</keyword>
+    <keyword>imap integration</keyword>
+    <keyword>end to end encryption</keyword>
+  </keywords>
 </component>
