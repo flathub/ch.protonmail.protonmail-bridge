@@ -58,6 +58,7 @@ modules:
       - install -Dp -m 644 usr/share/icons/hicolor/scalable/apps/protonmail-bridge.svg
         /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
       - install -Dp -m 644 usr/share/applications/protonmail-bridge.desktop /app/share/applications/${FLATPAK_ID}.desktop
+      - install -Dp -m 644 usr/share/doc/protonmail/bridge/LICENSE /app/share/licenses/${FLATPAK_ID}/protonmail-bridge/COPYING
       - desktop-file-edit --set-key="Icon" --set-value=${FLATPAK_ID} /app/share/applications/${FLATPAK_ID}.desktop
       - desktop-file-edit --set-key="Categories" --set-value="Office;Email" /app/share/applications/${FLATPAK_ID}.desktop
       - ln -s /app/lib/protonmail/bridge/proton-bridge /app/bin/protonmail-bridge
