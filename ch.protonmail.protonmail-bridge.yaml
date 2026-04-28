@@ -17,7 +17,7 @@ modules:
     config-opts:
       - --localstatedir=/var/lib
       - --sbindir=${FLATPAK_DEST}/bin
-      - --disable-stati
+      - --disable-static
       - --disable-rpath
     cleanup:
       - /bin
@@ -25,7 +25,7 @@ modules:
       - /lib/pkgconfig
       - /share/et
       - /share/examples
-      - /share/ma
+      - /share/man
     sources:
       - type: archive
         url: https://github.com/krb5/krb5/archive/refs/tags/krb5-1.22.1-final.tar.gz
@@ -36,6 +36,11 @@ modules:
           - autoreconf -si
   - name: libcbor
     buildsystem: cmake
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+      - /lib/cmake
+      - /lib/*.a
     sources:
       - type: git
         url: https://github.com/PJK/libcbor
@@ -43,6 +48,16 @@ modules:
         commit: 9826a4315116a588f7416912db9da6fcecd8da11
   - name: libfido2
     buildsystem: cmake
+    config-opts:
+      - -DBUILD_TESTS=OFF
+      - -DBUILD_EXAMPLES=OFF
+      - -DBUILD_MANPAGES=OFF
+      - -DBUILD_TOOLS=OFF
+      - -DBUILD_STATIC_LIBS=OFF
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+      - /lib/cmake
     sources:
       - type: git
         url: https://github.com/Yubico/libfido2
