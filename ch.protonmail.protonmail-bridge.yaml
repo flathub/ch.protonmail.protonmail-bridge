@@ -1,7 +1,9 @@
 id: ch.protonmail.protonmail-bridge
-runtime: org.freedesktop.Platform
-sdk: org.freedesktop.Sdk
-runtime-version: '25.08'
+runtime: org.kde.Platform
+runtime-version: '6.11'
+sdk: org.kde.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.golang
 command: protonmail-bridge
 finish-args:
   - --share=ipc
@@ -11,41 +13,21 @@ finish-args:
   - --device=dri
   - --talk-name=org.freedesktop.secrets
   - --talk-name=org.kde.StatusNotifierWatcher
+cleanup:
+  - /include
+  - /lib/pkgconfig
+  - /lib/cmake
+  - /lib/*.a
+  - /share/pkgconfig
 modules:
-  - name: krb5
-    subdir: src
-    config-opts:
-      - --localstatedir=/var/lib
-      - --sbindir=${FLATPAK_DEST}/bin
-      - --disable-static
-      - --disable-rpath
-    cleanup:
-      - /bin
-      - /include
-      - /lib/pkgconfig
-      - /share/et
-      - /share/examples
-      - /share/man
-    sources:
-      - type: archive
-        url: https://github.com/krb5/krb5/archive/refs/tags/krb5-1.22.1-final.tar.gz
-        sha256: d7dd1ded54c1c2d3381da4a266935feda6ba6398155720df27e2975bd5a39239
-      - type: shell
-        dest: src
-        commands:
-          - autoreconf -si
   - name: libcbor
     buildsystem: cmake
-    cleanup:
-      - /include
-      - /lib/pkgconfig
-      - /lib/cmake
-      - /lib/*.a
     sources:
       - type: git
         url: https://github.com/PJK/libcbor
         tag: v0.13.0
         commit: 9826a4315116a588f7416912db9da6fcecd8da11
+
   - name: libfido2
     buildsystem: cmake
     config-opts:
@@ -54,38 +36,172 @@ modules:
       - -DBUILD_MANPAGES=OFF
       - -DBUILD_TOOLS=OFF
       - -DBUILD_STATIC_LIBS=OFF
-    cleanup:
-      - /include
-      - /lib/pkgconfig
-      - /lib/cmake
     sources:
       - type: git
         url: https://github.com/Yubico/libfido2
         tag: 1.16.0
         commit: 7dc6b3c52d441c64a4235ae276a23865243395a1
-  - name: protonmail-bridge
+
+  # grpc and sentry-native versions follow upstream's vcpkg pin (extern/vcpkg)
+  - name: grpc
+    x-vcpkg-commit: 120deac3062162151622ca4860575a33844ba10b
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+      - -DBUILD_SHARED_LIBS=OFF
+      - -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+      - -DgRPC_INSTALL=ON
+      - -DgRPC_BUILD_TESTS=OFF
+      - -DgRPC_DOWNLOAD_ARCHIVES=OFF
+      - -DgRPC_SSL_PROVIDER=package
+      - -DgRPC_ZLIB_PROVIDER=package
+      - -DgRPC_BUILD_CSHARP_EXT=OFF
+      - -DgRPC_BUILD_GRPC_CSHARP_PLUGIN=OFF
+      - -DgRPC_BUILD_GRPC_NODE_PLUGIN=OFF
+      - -DgRPC_BUILD_GRPC_OBJECTIVE_C_PLUGIN=OFF
+      - -DgRPC_BUILD_GRPC_PHP_PLUGIN=OFF
+      - -DgRPC_BUILD_GRPC_PYTHON_PLUGIN=OFF
+      - -DgRPC_BUILD_GRPC_RUBY_PLUGIN=OFF
+    cleanup:
+      - /bin
+      - /share
+    # Only the submodules needed with tests off; commits match grpc's pins
+    sources:
+      - type: archive
+        url: https://github.com/grpc/grpc/archive/refs/tags/v1.71.0.tar.gz
+        sha256: 0d631419e54ec5b29def798623ee3bf5520dac77abeab3284ef7027ec2363f91
+      - type: archive
+        url: https://github.com/abseil/abseil-cpp/archive/4447c7562e3bc702ade25105912dce503f0c4010.tar.gz
+        sha256: df8b3e0da03567badd9440377810c39a38ab3346fa89df077bb52e68e4d61e74
+        dest: third_party/abseil-cpp
+      - type: archive
+        url: https://github.com/c-ares/c-ares/archive/6360e96b5cf8e5980c887ce58ef727e53d77243a.tar.gz
+        sha256: bf26e5b25e259911914a85ae847b6d723488adb5af4f8bdeb9d0871a318476e3
+        dest: third_party/cares/cares
+      - type: archive
+        url: https://github.com/protocolbuffers/protobuf/archive/2d4414f384dc499af113b5991ce3eaa9df6dd931.tar.gz
+        sha256: cf2db029202bb8eb1471b9bae387cc475d15d9e99c547e6906155033f81249a5
+        dest: third_party/protobuf
+      - type: archive
+        url: https://github.com/google/re2/archive/0c5616df9c0aaa44c9440d87422012423d91c7d1.tar.gz
+        sha256: 05a1960729d1053f170ba1ac52bd442cd47cdfbb95348f935fa1921439a9b80c
+        dest: third_party/re2
+
+  - name: sentry-native
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DSENTRY_BACKEND=none
+      - -DSENTRY_TRANSPORT=none
+      - -DSENTRY_BUILD_TESTS=OFF
+      - -DSENTRY_BUILD_EXAMPLES=OFF
+    sources:
+      - type: archive
+        url: https://github.com/getsentry/sentry-native/releases/download/0.10.0/sentry-native.zip
+        sha256: fe9c40e0f677405f61a8bae1bfdbb9760a84b9594665d92781ed4e18e4b1da1f
+        strip-components: 0
+
+  # Qt's adwaita decoration looks these up in the Adwaita theme, which the KDE runtime lacks
+  - name: adwaita-window-icons
     buildsystem: simple
     build-commands:
-      - install -Dp -m 644 ${FLATPAK_ID}.metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
-      - ar x protonmail-bridge.deb
-      - tar -xf data.tar.gz
-      - mv usr/lib/* /app/lib/
-      - install -Dp -m 644 usr/share/icons/hicolor/scalable/apps/protonmail-bridge.svg
-        /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
-      - install -Dp -m 644 usr/share/applications/protonmail-bridge.desktop /app/share/applications/${FLATPAK_ID}.desktop
-      - install -Dp -m 644 usr/share/doc/protonmail/bridge/LICENSE /app/share/licenses/${FLATPAK_ID}/protonmail-bridge/COPYING
-      - desktop-file-edit --set-key="Icon" --set-value=${FLATPAK_ID} /app/share/applications/${FLATPAK_ID}.desktop
-      - desktop-file-edit --set-key="Categories" --set-value="Office;Email" /app/share/applications/${FLATPAK_ID}.desktop
-      - ln -s /app/lib/protonmail/bridge/proton-bridge /app/bin/protonmail-bridge
+      - install -Dm644 -t /app/share/icons/Adwaita/symbolic/ui window-*-symbolic.svg
+      - install -Dm644 COPYING /app/share/licenses/${FLATPAK_ID}/adwaita-icon-theme/COPYING
     sources:
       - type: file
-        dest-filename: protonmail-bridge.deb
-        url: https://proton.me/download/bridge/protonmail-bridge_3.27.0-1_amd64.deb
-        sha256: 4ae1f9a38392379a08ab6cfb61b44078a339f55d1d366bbba0a0d9acf901e900
+        url: https://gitlab.gnome.org/GNOME/adwaita-icon-theme/-/raw/51.0/Adwaita/symbolic/ui/window-close-symbolic.svg
+        sha256: 8b94ea52c61f42f11720f825da7c6460134cf248aa00eff410a2aafee85f0047
+      - type: file
+        url: https://gitlab.gnome.org/GNOME/adwaita-icon-theme/-/raw/51.0/Adwaita/symbolic/ui/window-minimize-symbolic.svg
+        sha256: 014a24eab201337d889bafe9d8c694e9afc2a02f2bf4f62c16003dce1e77c5de
+      - type: file
+        url: https://gitlab.gnome.org/GNOME/adwaita-icon-theme/-/raw/51.0/Adwaita/symbolic/ui/window-maximize-symbolic.svg
+        sha256: 1b2357703b0d833b5b0e2e58352bb51d61bd5f218e660f60ba881805e60cf4e5
+      - type: file
+        url: https://gitlab.gnome.org/GNOME/adwaita-icon-theme/-/raw/51.0/Adwaita/symbolic/ui/window-restore-symbolic.svg
+        sha256: 1f63e8b2be899ef8af675c36117ee7ebb952a036e106469e30d0d9c82657ccce
+      - type: file
+        url: https://gitlab.gnome.org/GNOME/adwaita-icon-theme/-/raw/51.0/COPYING
+        sha256: 51f83b2b4e9ed2beebc9b8eed2ecad29314a58ed8c5184b22ad8f9df703d3ce5
+
+  - name: protonmail-bridge
+    buildsystem: simple
+    build-options:
+      append-path: /usr/lib/sdk/golang/bin
+      env:
+        GOFLAGS: -mod=vendor -trimpath -buildmode=pie
+        GOTOOLCHAIN: local
+        CGO_ENABLED: '1'
+        CGO_LDFLAGS: -lfido2 -lcbor -lssl -lcrypto
+    build-commands:
+      - cd utils && ./credits.sh bridge
+      - |
+        set -e
+        TAG=$(git describe --tags --exact-match)
+        VERSION=${TAG#v}
+        REVISION=$(git rev-parse --short=10 HEAD)
+        C=github.com/ProtonMail/proton-bridge/v3/internal/constants
+        go build -o bridge -ldflags "
+          -X '$C.FullAppName=Proton Mail Bridge'
+          -X $C.Version=$VERSION
+          -X $C.Revision=$REVISION
+          -X $C.Tag=$TAG
+          -X $C.BuildEnv=Flathub" ./cmd/Desktop-Bridge/
+        # FindQt.cmake puts /usr first, so pin deps built here
+        cmake -G Ninja -S internal/frontend/bridge-gui/bridge-gui -B gui-build \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_PREFIX_PATH=/app \
+          -Dabsl_DIR=/app/lib/cmake/absl \
+          -Dprotobuf_DIR=/app/lib/cmake/protobuf \
+          -Dutf8_range_DIR=/app/lib/cmake/utf8_range \
+          -DgRPC_DIR=/app/lib/cmake/grpc \
+          -DPROTOC_EXE=/app/bin/protoc \
+          -DGRPC_CPP_PLUGIN=/app/bin/grpc_cpp_plugin \
+          -DFETCHCONTENT_SOURCE_DIR_GOOGLETEST=$PWD/googletest \
+          -DBRIDGE_APP_FULL_NAME="Proton Mail Bridge" \
+          -DBRIDGE_VENDOR="Proton AG" \
+          -DBRIDGE_APP_VERSION=$VERSION \
+          -DBRIDGE_REVISION=$REVISION \
+          -DBRIDGE_TAG=$TAG \
+          -DBRIDGE_BUILD_ENV=Flathub \
+          -DBRIDGE_DSN_SENTRY=
+        cmake --build gui-build
+      # No launcher: it runs self-downloaded updates
+      - install -Dm755 -t /app/lib/protonmail/bridge bridge gui-build/bridge-gui
+      - ln -s /app/lib/protonmail/bridge/bridge-gui /app/bin/protonmail-bridge
+      - install -Dm644 dist/bridge.svg /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
+      - install -Dm644 dist/proton-bridge.desktop /app/share/applications/${FLATPAK_ID}.desktop
+      - desktop-file-edit --set-key=Icon --set-value=${FLATPAK_ID} /app/share/applications/${FLATPAK_ID}.desktop
+      - desktop-file-edit --set-key=Categories --set-value="Office;Email;" /app/share/applications/${FLATPAK_ID}.desktop
+      - install -Dm644 LICENSE /app/share/licenses/${FLATPAK_ID}/protonmail-bridge/COPYING
+      - install -Dm644 ${FLATPAK_ID}.metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
+    sources:
+      - type: git
+        url: https://github.com/ProtonMail/proton-bridge
+        tag: v3.27.0
+        commit: 04e46eb4fbc1c7ef4425a920bfc352050da0606b
+        disable-submodules: true
         x-checker-data:
           type: json
           url: https://proton.me/download/current_version_linux.json
           version-query: .Version
-          url-query: .DebFile
+          tag-query: '"v" + .Version'
+          timestamp-query: .ReleaseDate
+          is-main-source: true
+      - type: patch
+        paths:
+          - patches/remove-vcpkg-dependency.patch
+          - patches/skip-qt-deploy.patch
+          - patches/set-desktop-file-name.patch
+          - patches/disable-self-update.patch
+          - patches/hide-autostart-toggle.patch
+          - patches/handle-wait-flag.patch
+      # Fetched by bridgepp's CMake via FetchContent
+      - type: archive
+        url: https://github.com/google/googletest/archive/b796f7d44681514f58a683a3a71ff17c94edb0c1.zip
+        sha256: 983a7f2f4cc2a4d75d94ee06300c46a657291fba965e355d11ab3b6965a7b0e5
+        dest: googletest
+      - go.mod.yml
       - type: file
         path: ch.protonmail.protonmail-bridge.metainfo.xml
