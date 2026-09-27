@@ -1,0 +1,84 @@
+name: Update generated sources
+
+# Runs on version-bump PRs from the external data checker. Regenerates the Go
+# module sources for the new tag, then checks that the rest of the manifest
+# still matches upstream. Only works for branches in this repo, not forks.
+
+on:
+  pull_request:
+    paths:
+      - ch.protonmail.protonmail-bridge.yaml
+  workflow_dispatch:
+
+concurrency:
+  group: regenerate-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref }}
+
+      - name: Read upstream source from manifest
+        id: src
+        run: |
+          pip install --quiet pyyaml
+          python3 .github/scripts/manifest_info.py >> "$GITHUB_OUTPUT"
+
+      - name: Check whether the tag changed
+        id: changed
+        run: |
+          if [ "${{ github.event_name }}" != "pull_request" ]; then
+            echo "needed=true" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          git fetch --no-tags --depth=1 origin "${{ github.base_ref }}"
+          git show FETCH_HEAD:ch.protonmail.protonmail-bridge.yaml > /tmp/base.yaml
+          BASE_TAG=$(python3 .github/scripts/manifest_info.py /tmp/base.yaml | sed -n 's/^tag=//p')
+          if [ "$BASE_TAG" = "${{ steps.src.outputs.tag }}" ]; then
+            echo "needed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "needed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Clone proton-bridge
+        if: steps.changed.outputs.needed == 'true'
+        run: |
+          git clone --quiet --depth=1 --branch "${{ steps.src.outputs.tag }}" \
+            https://github.com/ProtonMail/proton-bridge.git _bridge
+          test "$(git -C _bridge rev-parse HEAD)" = "${{ steps.src.outputs.commit }}" \
+            || { echo "::error::tag does not match the commit in the manifest"; exit 1; }
+
+      - uses: actions/setup-go@v5
+        if: steps.changed.outputs.needed == 'true'
+        with:
+          go-version-file: _bridge/go.mod
+          cache: false
+
+      - name: Regenerate go.mod.yml and modules.txt
+        if: steps.changed.outputs.needed == 'true'
+        run: |
+          go install github.com/dennwc/flatpak-go-mod@v0.1.0
+          (cd _bridge && "$(go env GOPATH)/bin/flatpak-go-mod" .)
+          cp _bridge/go.mod.yml _bridge/modules.txt .
+
+      - name: Commit and push
+        if: steps.changed.outputs.needed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add go.mod.yml modules.txt
+          if ! git diff --cached --quiet; then
+            git commit -m "go: regenerate module sources for ${{ steps.src.outputs.tag }}"
+            git push
+          fi
+
+      - name: Check upstream pins and patches
+        if: steps.changed.outputs.needed == 'true'
+        run: python3 .github/scripts/check_upstream.py _bridge

@@ -1,0 +1,12 @@
+diff --git a/internal/frontend/bridge-gui/bridge-gui/qml/GeneralSettings.qml b/internal/frontend/bridge-gui/bridge-gui/qml/GeneralSettings.qml
+index b81ab7f..64c7807 100644
+--- a/internal/frontend/bridge-gui/bridge-gui/qml/GeneralSettings.qml
++++ b/internal/frontend/bridge-gui/bridge-gui/qml/GeneralSettings.qml
+@@ -46,6 +46,7 @@ SettingsView {
+     SettingsItem {
+         id: autostart
+         Layout.fillWidth: true
++        visible: false
+         checked: Backend.isAutostartOn
+         colorScheme: root.colorScheme
+         description: qsTr("Bridge will open upon startup.")

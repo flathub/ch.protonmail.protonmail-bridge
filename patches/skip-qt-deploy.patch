@@ -1,0 +1,9 @@
+diff --git a/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt b/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt
+index 102bffa..c3aec9b 100644
+--- a/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt
++++ b/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt
+@@ -196,4 +196,3 @@ else()
+     set(DEPLOY_OS Windows)
+ endif()
+ 
+-include(Deploy${DEPLOY_OS}.cmake)
