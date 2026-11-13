@@ -1,0 +1,56 @@
+diff --git a/internal/frontend/bridge-gui/bridge-gui/CommandLine.cpp b/internal/frontend/bridge-gui/bridge-gui/CommandLine.cpp
+index 33d0183..6b6df2c 100644
+--- a/internal/frontend/bridge-gui/bridge-gui/CommandLine.cpp
++++ b/internal/frontend/bridge-gui/bridge-gui/CommandLine.cpp
+@@ -27,6 +27,7 @@ namespace {
+ 
+ QString const hyphenatedLauncherFlag = "--launcher"; ///< launcher flag parameter used for bridge.
+ QString const hyphenatedWindowFlag = "--no-window"; ///< The no-window command-line flag.
++QString const hyphenatedWaitFlag = "--wait"; ///< The wait flag, normally consumed by the launcher.
+ QString const hyphenatedSoftwareRendererFlag = "--software-renderer"; ///< The 'software-renderer' command-line flag. enable software rendering for a single execution
+ QString const hyphenatedSetSoftwareRendererFlag = "--set-software-renderer"; ///< The 'set-software-renderer' command-line flag. Software rendering will be used for all subsequent executions of the application.
+ QString const hyphenatedSetHardwareRendererFlag = "--set-hardware-renderer"; ///< The 'set-hardware-renderer' command-line flag. Hardware rendering will be used for all subsequent executions of the application.
+@@ -73,6 +74,13 @@ CommandLineOptions parseCommandLine(QStringList const &argv) {
+             continue;
+         }
+         
++        // Without a launcher, handle --wait here instead of passing it to bridge.
++        if (arg == hyphenatedWaitFlag) {
++            options.wait = true;
++            i++; // skip the executable path.
++            continue;
++        }
++
+         // Arguments may contain some bridge flags.
+         if (arg == hyphenatedSoftwareRendererFlag) {
+             options.bridgeGuiArgs.append(arg);
+diff --git a/internal/frontend/bridge-gui/bridge-gui/CommandLine.h b/internal/frontend/bridge-gui/bridge-gui/CommandLine.h
+index 7b64776..48b089a 100644
+--- a/internal/frontend/bridge-gui/bridge-gui/CommandLine.h
++++ b/internal/frontend/bridge-gui/bridge-gui/CommandLine.h
+@@ -34,6 +34,7 @@ struct CommandLineOptions {
+     bridgepp::Log::Level logLevel { bridgepp::Log::defaultLevel }; ///< The log level
+     bool noWindow { false }; ///< Should the application start without displaying the main window?
+     bool useSoftwareRenderer { false }; ///< Should QML be renderer in software (i.e. without rendering hardware interface).
++    bool wait { false }; ///< Should we wait for a previous instance to exit? Normally handled by the launcher.
+ };
+ 
+ 
+diff --git a/internal/frontend/bridge-gui/bridge-gui/main.cpp b/internal/frontend/bridge-gui/bridge-gui/main.cpp
+index f31cad5..227aca0 100644
+--- a/internal/frontend/bridge-gui/bridge-gui/main.cpp
++++ b/internal/frontend/bridge-gui/bridge-gui/main.cpp
+@@ -295,6 +295,13 @@ int main(int argc, char *argv[]) {
+         log.setLevel(cliOptions.logLevel);
+ 
+         QLockFile lock(bridgepp::userCacheDir() + "/" + bridgeGUILock);
++        if (cliOptions.wait) {
++            // Give the instance that requested the restart time to exit.
++            QLockFile previous(lock.fileName());
++            if (previous.tryLock(10000)) {
++                previous.unlock();
++            }
++        }
+         if (!checkSingleInstance(lock)) {
+             focusOtherInstance();
+             return EXIT_FAILURE;

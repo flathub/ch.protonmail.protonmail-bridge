@@ -1,0 +1,27 @@
+diff --git a/internal/bridge/bridge.go b/internal/bridge/bridge.go
+index e824ab5..de8fdec 100644
+--- a/internal/bridge/bridge.go
++++ b/internal/bridge/bridge.go
+@@ -447,6 +447,10 @@ func (bridge *Bridge) init(tlsReporter TLSReporter) error {
+ 
+ 	// Check for updates when triggered.
+ 	bridge.goUpdate = bridge.tasks.PeriodicOrTrigger(constants.UpdateCheckInterval, 0, func(ctx context.Context) {
++		// Updates are handled by Flatpak.
++		bridge.publish(events.UpdateNotAvailable{})
++		return
++
+ 		logPkg.Info("Checking for updates")
+ 		var version updater.VersionInfo
+ 		var err error
+diff --git a/internal/frontend/bridge-gui/bridge-gui/qml/GeneralSettings.qml b/internal/frontend/bridge-gui/bridge-gui/qml/GeneralSettings.qml
+index b81ab7f..c010ed9 100644
+--- a/internal/frontend/bridge-gui/bridge-gui/qml/GeneralSettings.qml
++++ b/internal/frontend/bridge-gui/bridge-gui/qml/GeneralSettings.qml
+@@ -35,6 +35,7 @@ SettingsView {
+     SettingsItem {
+         id: autoUpdate
+         Layout.fillWidth: true
++        visible: false
+         checked: Backend.isAutomaticUpdateOn
+         colorScheme: root.colorScheme
+         description: qsTr("Bridge will automatically update in the background.")
