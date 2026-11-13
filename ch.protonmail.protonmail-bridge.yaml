@@ -179,8 +179,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonMail/proton-bridge
-        tag: v3.27.0
-        commit: 04e46eb4fbc1c7ef4425a920bfc352050da0606b
+        tag: v3.27.1
+        commit: 43b9237786204a0215abfd4dcc51ee7bb92f52d4
         disable-submodules: true
         x-checker-data:
           type: json
